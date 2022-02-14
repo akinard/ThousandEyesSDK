@@ -1,0 +1,2967 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "title" : "Thousand Eyes API V6",
+    "version" : "6.0.0"
+  },
+  "externalDocs" : {
+    "description" : "Developer Reference",
+    "url" : "https://developer.thousandeyes.com/v6/"
+  },
+  "servers" : [ {
+    "description" : "Thousand Eyes API V6",
+    "url" : "https://api.thousandeyes.com/v6"
+  } ],
+  "tags" : [ {
+    "externalDocs" : {
+      "url" : "https://developer.thousandeyes.com/v6"
+    },
+    "name" : "Status"
+  }, {
+    "externalDocs" : {
+      "url" : "https://developer.thousandeyes.com/v6/tests"
+    },
+    "name" : "Tests"
+  }, {
+    "externalDocs" : {
+      "url" : "https://developer.thousandeyes.com/v6/agents"
+    },
+    "name" : "Agents & Monitors"
+  }, {
+    "externalDocs" : {
+      "url" : "https://developer.thousandeyes.com/v6/alerts"
+    },
+    "name" : "Alerts & Notifications"
+  }, {
+    "externalDocs" : {
+      "url" : "https://developer.thousandeyes.com/v6/labels"
+    },
+    "name" : "Labels"
+  } ],
+  "paths" : {
+    "/status" : {
+      "get" : {
+        "description" : "This is simply intended for verification that the API is currently running.",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200"
+                }
+              }
+            },
+            "description" : "current controller time (in epoch format)"
+          }
+        },
+        "summary" : "This returns the current controller time (in epoch format)",
+        "tags" : [ "Status" ]
+      }
+    },
+    "/tests" : {
+      "get" : {
+        "description" : "Also returns data for saved events, which are indicated by a boolean field, `\"savedEvent\": 1`",
+        "parameters" : [ {
+          "description" : "Specifies the account group context of the request, obtained from the /account-groups endpoint. Specifying this parameter without the user being assigned to the target account will result in an error response.",
+          "explode" : true,
+          "in" : "query",
+          "name" : "aid",
+          "required" : false,
+          "schema" : {
+            "type" : "integer"
+          },
+          "style" : "form"
+        } ],
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_1"
+                }
+              }
+            },
+            "description" : "Sends back an array of tests.",
+            "headers" : {
+              "X-Organization-Rate-Limit-Limit" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Limit"
+              },
+              "X-Organization-Rate-Limit-Remaining" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Remaining"
+              },
+              "X-Organization-Rate-Limit-Reset" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Reset"
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        }, {
+          "basicAuth" : [ ]
+        } ],
+        "summary" : "Returns a list of all tests configured in ThousandEyes.",
+        "tags" : [ "Tests" ]
+      }
+    },
+    "/tests/{testType}" : {
+      "get" : {
+        "description" : "Also returns data for saved events, which are indicated by a boolean field, `\"savedEvent\": 1`",
+        "parameters" : [ {
+          "description" : "Specifies the account group context of the request, obtained from the /account-groups endpoint. Specifying this parameter without the user being assigned to the target account will result in an error response.",
+          "explode" : true,
+          "in" : "query",
+          "name" : "aid",
+          "required" : false,
+          "schema" : {
+            "type" : "integer"
+          },
+          "style" : "form"
+        }, {
+          "explode" : false,
+          "in" : "path",
+          "name" : "testType",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/components/schemas/testType"
+          },
+          "style" : "simple"
+        } ],
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_1"
+                }
+              }
+            },
+            "description" : "Sends back an array of tests.",
+            "headers" : {
+              "X-Organization-Rate-Limit-Limit" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Limit"
+              },
+              "X-Organization-Rate-Limit-Remaining" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Remaining"
+              },
+              "X-Organization-Rate-Limit-Reset" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Reset"
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        }, {
+          "basicAuth" : [ ]
+        } ],
+        "summary" : "Returns a list of all tests of the type specified, configured in ThousandEyes.",
+        "tags" : [ "Tests" ]
+      }
+    },
+    "/tests/{testId}" : {
+      "get" : {
+        "parameters" : [ {
+          "description" : "Specifies the account group context of the request, obtained from the /account-groups endpoint. Specifying this parameter without the user being assigned to the target account will result in an error response.",
+          "explode" : true,
+          "in" : "query",
+          "name" : "aid",
+          "required" : false,
+          "schema" : {
+            "type" : "integer"
+          },
+          "style" : "form"
+        }, {
+          "description" : "the ID of the test you wish to retrieve",
+          "explode" : false,
+          "in" : "path",
+          "name" : "testId",
+          "required" : true,
+          "schema" : {
+            "format" : "int32",
+            "type" : "integer"
+          },
+          "style" : "simple"
+        } ],
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_1"
+                }
+              }
+            },
+            "description" : "Sends back an array of tests.",
+            "headers" : {
+              "X-Organization-Rate-Limit-Limit" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Limit"
+              },
+              "X-Organization-Rate-Limit-Remaining" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Remaining"
+              },
+              "X-Organization-Rate-Limit-Reset" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Reset"
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        }, {
+          "basicAuth" : [ ]
+        } ],
+        "summary" : "Returns a details for a test, including test type, name, intervals, targets, alert rules and agents.",
+        "tags" : [ "Tests" ]
+      }
+    },
+    "/tests/{testType}/new" : {
+      "post" : {
+        "description" : "In order to create a new test, the user attempting the creation must be an Account Admin.<br><br> Regular users are blocked from using any of the POST-based methods.<br><br> Note: When creating or updating a test and assigning alert rules, that alert rules are based on specific measurements being available. For example, when creating an HTTP server test with network measurements disabled, you will not be able to assign any alert rules that are based on network metrics. The same applies to BGP measurements.\n",
+        "parameters" : [ {
+          "description" : "Specifies the account group context of the request, obtained from the /account-groups endpoint. Specifying this parameter without the user being assigned to the target account will result in an error response.",
+          "explode" : true,
+          "in" : "query",
+          "name" : "aid",
+          "required" : false,
+          "schema" : {
+            "type" : "integer"
+          },
+          "style" : "form"
+        }, {
+          "explode" : false,
+          "in" : "path",
+          "name" : "testType",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/components/schemas/testType"
+          },
+          "style" : "simple"
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "example" : {
+                "interval" : 3600,
+                "agents" : [ {
+                  "agentId" : 113
+                } ],
+                "testName" : "API agent-to-server test addition for www.thousandeyes.com",
+                "server" : "www.thousandeyes.com",
+                "port" : 80,
+                "alertsEnabled" : 0
+              },
+              "schema" : {
+                "oneOf" : [ {
+                  "$ref" : "#/components/schemas/httpTest"
+                }, {
+                  "$ref" : "#/components/schemas/agentToServerTest"
+                } ]
+              }
+            }
+          },
+          "description" : "Request body should contain fields to be set during creation.",
+          "required" : true
+        },
+        "responses" : {
+          "201" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_1"
+                }
+              }
+            },
+            "description" : "the test definition",
+            "headers" : {
+              "X-Organization-Rate-Limit-Limit" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Limit"
+              },
+              "X-Organization-Rate-Limit-Remaining" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Remaining"
+              },
+              "X-Organization-Rate-Limit-Reset" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Reset"
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        }, {
+          "basicAuth" : [ ]
+        } ],
+        "summary" : "Creates a new test in ThousandEyes, based on properties provided in the POST data.",
+        "tags" : [ "Tests" ]
+      }
+    },
+    "/tests/{testType}/{testId}/update" : {
+      "post" : {
+        "description" : "In order to edit a test, the user attempting the creation must be an Account Admin, and the target test cannot be a live share or saved event.<br><br> Regular users are blocked from using any of the POST-based methods.<br><br> Note: When creating or updating a test and assigning alert rules, that alert rules are based on specific measurements being available. For example, when creating an HTTP server test with network measurements disabled, you will not be able to assign any alert rules that are based on network metrics. The same applies to BGP measurements.\n",
+        "parameters" : [ {
+          "description" : "Specifies the account group context of the request, obtained from the /account-groups endpoint. Specifying this parameter without the user being assigned to the target account will result in an error response.",
+          "explode" : true,
+          "in" : "query",
+          "name" : "aid",
+          "required" : false,
+          "schema" : {
+            "type" : "integer"
+          },
+          "style" : "form"
+        }, {
+          "explode" : false,
+          "in" : "path",
+          "name" : "testType",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/components/schemas/testType"
+          },
+          "style" : "simple"
+        }, {
+          "description" : "corresponds to a testId of the type specified by `{testType}`, see the test list endpoint for a listing of tests",
+          "explode" : false,
+          "in" : "path",
+          "name" : "testId",
+          "required" : true,
+          "schema" : {
+            "format" : "int32",
+            "type" : "integer"
+          },
+          "style" : "simple"
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "example" : {
+                "interval" : 900,
+                "agents" : [ {
+                  "agentId" : 117
+                } ],
+                "testName" : "Edited test name for API network test addition for www.thousandeyes.com"
+              },
+              "schema" : {
+                "oneOf" : [ {
+                  "$ref" : "#/components/schemas/httpTest"
+                }, {
+                  "$ref" : "#/components/schemas/agentToServerTest"
+                } ]
+              }
+            }
+          },
+          "description" : "Request body should contain fields to be set during creation.",
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_1"
+                }
+              }
+            },
+            "description" : "If a test is successfully edited, an HTTP/200 OK response will be returned, and the test definition will be returned. The modifiedBy and modifiedDate fields should be updated according to the user who edited the account",
+            "headers" : {
+              "X-Organization-Rate-Limit-Limit" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Limit"
+              },
+              "X-Organization-Rate-Limit-Remaining" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Remaining"
+              },
+              "X-Organization-Rate-Limit-Reset" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Reset"
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        }, {
+          "basicAuth" : [ ]
+        } ],
+        "summary" : "Updates a test in ThousandEyes, based on properties provided in the POST data.",
+        "tags" : [ "Tests" ]
+      }
+    },
+    "/tests/{testType}/{testId}/delete" : {
+      "post" : {
+        "description" : "In order to delete a test, the user attempting the creation must be an Account Admin.<br><br> Regular users are blocked from using any of the POST-based methods.\n",
+        "parameters" : [ {
+          "description" : "Specifies the account group context of the request, obtained from the /account-groups endpoint. Specifying this parameter without the user being assigned to the target account will result in an error response.",
+          "explode" : true,
+          "in" : "query",
+          "name" : "aid",
+          "required" : false,
+          "schema" : {
+            "type" : "integer"
+          },
+          "style" : "form"
+        }, {
+          "explode" : false,
+          "in" : "path",
+          "name" : "testType",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/components/schemas/testType"
+          },
+          "style" : "simple"
+        }, {
+          "description" : "corresponds to a testId of the type specified by `{testType}`, see the test list endpoint for a listing of tests",
+          "explode" : false,
+          "in" : "path",
+          "name" : "testId",
+          "required" : true,
+          "schema" : {
+            "format" : "int32",
+            "type" : "integer"
+          },
+          "style" : "simple"
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "If a test is successfully deleted, an HTTP/204 NO CONTENT response will be returned, and an empty JSON response will be in the body of the response.",
+            "headers" : {
+              "X-Organization-Rate-Limit-Limit" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Limit"
+              },
+              "X-Organization-Rate-Limit-Remaining" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Remaining"
+              },
+              "X-Organization-Rate-Limit-Reset" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Reset"
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        }, {
+          "basicAuth" : [ ]
+        } ],
+        "summary" : "Deletes the specified test in ThousandEyes, based on the testId provided in the API request.",
+        "tags" : [ "Tests" ]
+      }
+    },
+    "/agents" : {
+      "get" : {
+        "parameters" : [ {
+          "description" : "Specifies the account group context of the request, obtained from the /account-groups endpoint. Specifying this parameter without the user being assigned to the target account will result in an error response.",
+          "explode" : true,
+          "in" : "query",
+          "name" : "aid",
+          "required" : false,
+          "schema" : {
+            "type" : "integer"
+          },
+          "style" : "form"
+        }, {
+          "description" : "Specifies the type of agents requested. Accepts either a single allowed value or a comma-separated list of allowed values",
+          "explode" : false,
+          "in" : "query",
+          "name" : "agentTypes",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/components/schemas/agentType"
+          },
+          "style" : "form"
+        } ],
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_2"
+                }
+              }
+            },
+            "description" : "Sends back an array of tests.",
+            "headers" : {
+              "X-Organization-Rate-Limit-Limit" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Limit"
+              },
+              "X-Organization-Rate-Limit-Remaining" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Remaining"
+              },
+              "X-Organization-Rate-Limit-Reset" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Reset"
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        }, {
+          "basicAuth" : [ ]
+        } ],
+        "summary" : "Returns a list of all agents available to your account in ThousandEyes, including both Enterprise and Cloud agents.",
+        "tags" : [ "Agents & Monitors" ]
+      }
+    },
+    "/agents/{agentId}" : {
+      "get" : {
+        "description" : "Enterprise agents show utilization data and assigned accounts.",
+        "parameters" : [ {
+          "description" : "Specifies the account group context of the request, obtained from the /account-groups endpoint. Specifying this parameter without the user being assigned to the target account will result in an error response.",
+          "explode" : true,
+          "in" : "query",
+          "name" : "aid",
+          "required" : false,
+          "schema" : {
+            "type" : "integer"
+          },
+          "style" : "form"
+        }, {
+          "description" : "the ID of the label to retrieve",
+          "explode" : false,
+          "in" : "path",
+          "name" : "agentId",
+          "required" : true,
+          "schema" : {
+            "type" : "integer"
+          },
+          "style" : "simple"
+        } ],
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_2"
+                }
+              }
+            },
+            "description" : "Sends back an array of tests.",
+            "headers" : {
+              "X-Organization-Rate-Limit-Limit" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Limit"
+              },
+              "X-Organization-Rate-Limit-Remaining" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Remaining"
+              },
+              "X-Organization-Rate-Limit-Reset" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Reset"
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        }, {
+          "basicAuth" : [ ]
+        } ],
+        "summary" : "Returns details for an agent, including assigned tests.",
+        "tags" : [ "Agents & Monitors" ]
+      }
+    },
+    "/alerts" : {
+      "get" : {
+        "parameters" : [ {
+          "description" : "Specifies the account group context of the request, obtained from the /account-groups endpoint. Specifying this parameter without the user being assigned to the target account will result in an error response.",
+          "explode" : true,
+          "in" : "query",
+          "name" : "aid",
+          "required" : false,
+          "schema" : {
+            "type" : "integer"
+          },
+          "style" : "form"
+        }, {
+          "description" : "The window parameter is used to specify an amount of time in the past for which to fetch data. That is, data will be retrieved from the specified amount of time ago up until the time of the request. A time window is a number followed by an optional time interval type. The supported time interval types are s for seconds, m for minutes, h for hours, d for days, and w for weeks. If no time interval type is specified, seconds are assumed. For example, window=10d would retrieve data from the last 10 days, window=12h would retrieve data from the last 12 hours, and window=1200 will retrieve data from the last 1200 seconds.",
+          "explode" : true,
+          "in" : "query",
+          "name" : "window",
+          "required" : false,
+          "schema" : {
+            "pattern" : "^[0-9]+[smhdw]?$",
+            "type" : "string"
+          },
+          "style" : "form"
+        }, {
+          "description" : "`YYYY-mm-ddTHH:MM:SS` specifies an explicit start for your range of data. The to parameter is optional – if omitted, the current time (at the time of the request) will be assumed. Dates must be specified in the ISO 8601 date-time format, with hyphens between date fields and colons between time fields. The full time (hours, minutes, and seconds) must be included. The date and time can be separated by either a space or the letter T. Example: 2012-01-01T00:00:00. The date range is inclusive. Time zone is UTC.",
+          "explode" : true,
+          "in" : "query",
+          "name" : "from",
+          "required" : false,
+          "schema" : {
+            "format" : "date-time",
+            "type" : "string"
+          },
+          "style" : "form"
+        }, {
+          "description" : "`YYYY-mm-ddTHH:MM:SS` specifies an explicit end for your range of data. The to parameter is optional – if omitted, the current time (at the time of the request) will be assumed. Dates must be specified in the ISO 8601 date-time format, with hyphens between date fields and colons between time fields. The full time (hours, minutes, and seconds) must be included. The date and time can be separated by either a space or the letter T. Example: 2012-01-01T00:00:00. The date range is inclusive. Time zone is UTC.<br><br>**Note** The `from`/`to` and `window` parameters are mutually exclusive – the server will produce a 400 error if both `window` and either `from` or `to` is specified. It will also produce a 400 error if `to` is specified without `from`.",
+          "explode" : true,
+          "in" : "query",
+          "name" : "to",
+          "required" : false,
+          "schema" : {
+            "format" : "date-time",
+            "type" : "string"
+          },
+          "style" : "form"
+        } ],
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_3"
+                }
+              }
+            },
+            "description" : "Sends back an array of active alerts, either at present, or based on the time range specified, indicating testId and testName, alert rule. If no alerts are active during the time range specified, an empty response will be returned.",
+            "headers" : {
+              "X-Organization-Rate-Limit-Limit" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Limit"
+              },
+              "X-Organization-Rate-Limit-Remaining" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Remaining"
+              },
+              "X-Organization-Rate-Limit-Reset" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Reset"
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        }, {
+          "basicAuth" : [ ]
+        } ],
+        "summary" : "Returns a list of all active alerts, active at any given time.",
+        "tags" : [ "Alerts & Notifications" ]
+      }
+    },
+    "/alerts/{alertId}" : {
+      "get" : {
+        "parameters" : [ {
+          "description" : "Specifies the account group context of the request, obtained from the /account-groups endpoint. Specifying this parameter without the user being assigned to the target account will result in an error response.",
+          "explode" : true,
+          "in" : "query",
+          "name" : "aid",
+          "required" : false,
+          "schema" : {
+            "type" : "integer"
+          },
+          "style" : "form"
+        }, {
+          "description" : "the ID of the alert to retrieve",
+          "explode" : false,
+          "in" : "path",
+          "name" : "alertId",
+          "required" : true,
+          "schema" : {
+            "type" : "integer"
+          },
+          "style" : "simple"
+        } ],
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_4"
+                }
+              }
+            },
+            "description" : "Sends back detailed information about a specific alertId. If the alertId doesn’t exist or is inaccessible by your account, an empty response will be returned.",
+            "headers" : {
+              "X-Organization-Rate-Limit-Limit" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Limit"
+              },
+              "X-Organization-Rate-Limit-Remaining" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Remaining"
+              },
+              "X-Organization-Rate-Limit-Reset" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Reset"
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        }, {
+          "basicAuth" : [ ]
+        } ],
+        "summary" : "Returns details about an alert.",
+        "tags" : [ "Alerts & Notifications" ]
+      }
+    },
+    "/alert-rules" : {
+      "get" : {
+        "parameters" : [ {
+          "description" : "Specifies the account group context of the request, obtained from the /account-groups endpoint. Specifying this parameter without the user being assigned to the target account will result in an error response.",
+          "explode" : true,
+          "in" : "query",
+          "name" : "aid",
+          "required" : false,
+          "schema" : {
+            "type" : "integer"
+          },
+          "style" : "form"
+        } ],
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_5"
+                }
+              }
+            },
+            "description" : "Sends back an array of alert rules, indicating ruleID, whether or not the alert is enabled, recipient lists, and the rule criteria and clearing logic. Default rules for each type are indicated with a bit response (1 or 0); default alert rules are assigned by default to each type of test to which they apply.",
+            "headers" : {
+              "X-Organization-Rate-Limit-Limit" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Limit"
+              },
+              "X-Organization-Rate-Limit-Remaining" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Remaining"
+              },
+              "X-Organization-Rate-Limit-Reset" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Reset"
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        }, {
+          "basicAuth" : [ ]
+        } ],
+        "summary" : "Returns a list of all alert rules configured under your account in ThousandEyes.",
+        "tags" : [ "Alerts & Notifications" ]
+      }
+    },
+    "/alert-rules/{ruleId}" : {
+      "get" : {
+        "parameters" : [ {
+          "description" : "Specifies the account group context of the request, obtained from the /account-groups endpoint. Specifying this parameter without the user being assigned to the target account will result in an error response.",
+          "explode" : true,
+          "in" : "query",
+          "name" : "aid",
+          "required" : false,
+          "schema" : {
+            "type" : "integer"
+          },
+          "style" : "form"
+        }, {
+          "description" : "the ID of the rule to retrieve",
+          "explode" : false,
+          "in" : "path",
+          "name" : "ruleId",
+          "required" : true,
+          "schema" : {
+            "type" : "integer"
+          },
+          "style" : "simple"
+        } ],
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_6"
+                }
+              }
+            },
+            "description" : "Sends back detailed information about a specific alert rule. If the ruleId doesn’t exist or is inaccessible by your account, an empty response will be returned.",
+            "headers" : {
+              "X-Organization-Rate-Limit-Limit" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Limit"
+              },
+              "X-Organization-Rate-Limit-Remaining" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Remaining"
+              },
+              "X-Organization-Rate-Limit-Reset" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Reset"
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        }, {
+          "basicAuth" : [ ]
+        } ],
+        "summary" : "Returns details about an alert rule.",
+        "tags" : [ "Alerts & Notifications" ]
+      }
+    },
+    "/alert-rules/new" : {
+      "post" : {
+        "description" : "In order to create a new alert rule, the user attempting the creation must be in a role that has the Edit alert rules permission. Users without this permission will receive an error.<br><br>Note: when assigning any alert rule to a test (which can be done as part of the creation activity), the user must be in a role that has the Edit tests permission.",
+        "parameters" : [ {
+          "description" : "Specifies the account group context of the request, obtained from the /account-groups endpoint. Specifying this parameter without the user being assigned to the target account will result in an error response.",
+          "explode" : true,
+          "in" : "query",
+          "name" : "aid",
+          "required" : false,
+          "schema" : {
+            "type" : "integer"
+          },
+          "style" : "form"
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "example" : {
+                "alertType" : "FTP",
+                "default" : "0,",
+                "expression" : "((reachability < 90%))",
+                "minimumSources" : 10,
+                "notes" : "FTP Alert rule created using write api",
+                "description" : "TE FTP Alert rule with write api",
+                "notifications" : {
+                  "email" : {
+                    "message" : "",
+                    "recipient" : [ "noreply@thousandeyes.com" ]
+                  },
+                  "thirdParty" : [ {
+                    "integrationId" : "sl-101",
+                    "integrationType" : "SLACK"
+                  } ],
+                  "webhook" : [ {
+                    "integrationId" : "wb-201",
+                    "integrationType" : "WEBHOOK"
+                  } ]
+                },
+                "notifyOnClear" : 1,
+                "roundsViolatingOutOf" : 10,
+                "roundsViolatingRequired" : 10,
+                "roundsViolatingMode" : "ANY",
+                "ruleName" : "FTP Alert Rule",
+                "sourceMeasure" : "percent",
+                "testIds" : [ 1001, 1002 ]
+              },
+              "schema" : {
+                "allOf" : [ {
+                  "$ref" : "#/components/schemas/alertRule"
+                }, {
+                  "required" : [ "alertType", "expression", "roundsViolatingOutOf", "roundsViolatingRequired", "ruleName" ]
+                } ]
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "201" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_5"
+                }
+              }
+            },
+            "description" : "If successful, will respond with an HTTP/201 response and a body which contains the new alert rule definition.",
+            "headers" : {
+              "X-Organization-Rate-Limit-Limit" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Limit"
+              },
+              "X-Organization-Rate-Limit-Remaining" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Remaining"
+              },
+              "X-Organization-Rate-Limit-Reset" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Reset"
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        }, {
+          "basicAuth" : [ ]
+        } ],
+        "summary" : "Creates a new alert rule in your account, based on properties provided in the POST data.",
+        "tags" : [ "Alerts & Notifications" ]
+      }
+    },
+    "/alert-rules/{ruleId}/update" : {
+      "post" : {
+        "description" : "In order to modify an alert rule, the user attempting the creation must be in a role that has the Edit alert rules permission. Users without this permission will receive an error.<br><br>Note: when assigning any alert rule to a test (which can be done as part of the update activity), the user must be in a role that has the Edit tests permission.",
+        "parameters" : [ {
+          "description" : "Specifies the account group context of the request, obtained from the /account-groups endpoint. Specifying this parameter without the user being assigned to the target account will result in an error response.",
+          "explode" : true,
+          "in" : "query",
+          "name" : "aid",
+          "required" : false,
+          "schema" : {
+            "type" : "integer"
+          },
+          "style" : "form"
+        }, {
+          "description" : "the ID of the rule to update",
+          "explode" : false,
+          "in" : "path",
+          "name" : "ruleId",
+          "required" : true,
+          "schema" : {
+            "type" : "integer"
+          },
+          "style" : "simple"
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "example" : {
+                "alertType" : "FTP",
+                "default" : "0,",
+                "expression" : "((reachability < 90%))",
+                "minimumSources" : 10,
+                "notes" : "FTP Alert rule created using write api",
+                "description" : "TE FTP Alert rule with write api",
+                "notifications" : {
+                  "email" : {
+                    "message" : "",
+                    "recipient" : [ "noreply@thousandeyes.com" ]
+                  },
+                  "thirdParty" : [ {
+                    "integrationId" : "sl-101",
+                    "integrationType" : "SLACK"
+                  } ],
+                  "webhook" : [ {
+                    "integrationId" : "wb-201",
+                    "integrationType" : "WEBHOOK"
+                  } ]
+                },
+                "notifyOnClear" : 1,
+                "roundsViolatingOutOf" : 10,
+                "roundsViolatingRequired" : 10,
+                "roundsViolatingMode" : "ANY",
+                "ruleName" : "FTP Alert Rule",
+                "sourceMeasure" : "percent",
+                "testIds" : [ 1001, 1002 ]
+              },
+              "schema" : {
+                "allOf" : [ {
+                  "$ref" : "#/components/schemas/alertRule"
+                }, {
+                  "required" : [ "alertType", "expression", "roundsViolatingOutOf", "roundsViolatingRequired", "ruleName" ]
+                } ]
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_5"
+                }
+              }
+            },
+            "description" : "If successful, will respond with an HTTP/200 response and the modified rule definition in the body.",
+            "headers" : {
+              "X-Organization-Rate-Limit-Limit" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Limit"
+              },
+              "X-Organization-Rate-Limit-Remaining" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Remaining"
+              },
+              "X-Organization-Rate-Limit-Reset" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Reset"
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        }, {
+          "basicAuth" : [ ]
+        } ],
+        "summary" : "Modifies an existing alert rule in your account, based on properties provided in the POST data.",
+        "tags" : [ "Alerts & Notifications" ]
+      }
+    },
+    "/alert-rules/{ruleId}/delete" : {
+      "post" : {
+        "description" : "In order to delete an alert rule, the user attempting the creation must be in a role that has the Edit alert rules permission, as well as Edit Tests permission, in the event that the alert rule is assigned to any tests. Users without appropriate permissions will receive an error.",
+        "parameters" : [ {
+          "description" : "Specifies the account group context of the request, obtained from the /account-groups endpoint. Specifying this parameter without the user being assigned to the target account will result in an error response.",
+          "explode" : true,
+          "in" : "query",
+          "name" : "aid",
+          "required" : false,
+          "schema" : {
+            "type" : "integer"
+          },
+          "style" : "form"
+        }, {
+          "description" : "the ID of the rule to delete",
+          "explode" : false,
+          "in" : "path",
+          "name" : "ruleId",
+          "required" : true,
+          "schema" : {
+            "type" : "integer"
+          },
+          "style" : "simple"
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "Response header will be returned as HTTP/204 response code. No response body will be returned.",
+            "headers" : {
+              "X-Organization-Rate-Limit-Limit" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Limit"
+              },
+              "X-Organization-Rate-Limit-Remaining" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Remaining"
+              },
+              "X-Organization-Rate-Limit-Reset" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Reset"
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        }, {
+          "basicAuth" : [ ]
+        } ],
+        "summary" : "Deletes an alert rule in your account.",
+        "tags" : [ "Alerts & Notifications" ]
+      }
+    },
+    "/integrations" : {
+      "get" : {
+        "parameters" : [ {
+          "description" : "Specifies the account group context of the request, obtained from the /account-groups endpoint. Specifying this parameter without the user being assigned to the target account will result in an error response.",
+          "explode" : true,
+          "in" : "query",
+          "name" : "aid",
+          "required" : false,
+          "schema" : {
+            "type" : "integer"
+          },
+          "style" : "form"
+        } ],
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_7"
+                }
+              }
+            },
+            "description" : "Returns an object with two array properties: thirdParty and webhook.",
+            "headers" : {
+              "X-Organization-Rate-Limit-Limit" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Limit"
+              },
+              "X-Organization-Rate-Limit-Remaining" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Remaining"
+              },
+              "X-Organization-Rate-Limit-Reset" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Reset"
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        }, {
+          "basicAuth" : [ ]
+        } ],
+        "summary" : "Returns a list of all alert notification integrations (webhooks, PagerDuty, Slack, …)",
+        "tags" : [ "Alerts & Notifications" ]
+      }
+    },
+    "/groups" : {
+      "get" : {
+        "description" : "This includes both Agent and Test labels.",
+        "parameters" : [ {
+          "description" : "Specifies the account group context of the request, obtained from the /account-groups endpoint. Specifying this parameter without the user being assigned to the target account will result in an error response.",
+          "explode" : true,
+          "in" : "query",
+          "name" : "aid",
+          "required" : false,
+          "schema" : {
+            "type" : "integer"
+          },
+          "style" : "form"
+        } ],
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_8"
+                }
+              }
+            },
+            "description" : "Sends back an array of labels configured in the platform.",
+            "headers" : {
+              "X-Organization-Rate-Limit-Limit" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Limit"
+              },
+              "X-Organization-Rate-Limit-Remaining" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Remaining"
+              },
+              "X-Organization-Rate-Limit-Reset" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Reset"
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        }, {
+          "basicAuth" : [ ]
+        } ],
+        "summary" : "Returns a list of all labels (formerly called groups) configured in ThousandEyes.",
+        "tags" : [ "Labels" ]
+      }
+    },
+    "/groups/{type}" : {
+      "get" : {
+        "parameters" : [ {
+          "description" : "Specifies the account group context of the request, obtained from the /account-groups endpoint. Specifying this parameter without the user being assigned to the target account will result in an error response.",
+          "explode" : true,
+          "in" : "query",
+          "name" : "aid",
+          "required" : false,
+          "schema" : {
+            "type" : "integer"
+          },
+          "style" : "form"
+        }, {
+          "explode" : false,
+          "in" : "path",
+          "name" : "type",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/components/schemas/groupType"
+          },
+          "style" : "simple"
+        } ],
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_8"
+                }
+              }
+            },
+            "description" : "Sends back an array of labels configured in the platform.",
+            "headers" : {
+              "X-Organization-Rate-Limit-Limit" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Limit"
+              },
+              "X-Organization-Rate-Limit-Remaining" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Remaining"
+              },
+              "X-Organization-Rate-Limit-Reset" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Reset"
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        }, {
+          "basicAuth" : [ ]
+        } ],
+        "summary" : "Returns a list of all tests of the label (formerly called group) type specified, configured in ThousandEyes.",
+        "tags" : [ "Labels" ]
+      }
+    },
+    "/groups/{groupId}" : {
+      "get" : {
+        "parameters" : [ {
+          "description" : "Specifies the account group context of the request, obtained from the /account-groups endpoint. Specifying this parameter without the user being assigned to the target account will result in an error response.",
+          "explode" : true,
+          "in" : "query",
+          "name" : "aid",
+          "required" : false,
+          "schema" : {
+            "type" : "integer"
+          },
+          "style" : "form"
+        }, {
+          "description" : "the ID of the label to retrieve",
+          "explode" : false,
+          "in" : "path",
+          "name" : "groupId",
+          "required" : true,
+          "schema" : {
+            "type" : "integer"
+          },
+          "style" : "simple"
+        } ],
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_9"
+                }
+              }
+            },
+            "description" : "Sends back an array of labels configured in the platform.",
+            "headers" : {
+              "X-Organization-Rate-Limit-Limit" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Limit"
+              },
+              "X-Organization-Rate-Limit-Remaining" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Remaining"
+              },
+              "X-Organization-Rate-Limit-Reset" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Reset"
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        }, {
+          "basicAuth" : [ ]
+        } ],
+        "summary" : "Returns details for a label (formerly called group) configured in ThousandEyes.",
+        "tags" : [ "Labels" ]
+      }
+    },
+    "/groups/{type}/{groupId}" : {
+      "get" : {
+        "description" : "This includes both Agent and Test labels.",
+        "parameters" : [ {
+          "description" : "Specifies the account group context of the request, obtained from the /account-groups endpoint. Specifying this parameter without the user being assigned to the target account will result in an error response.",
+          "explode" : true,
+          "in" : "query",
+          "name" : "aid",
+          "required" : false,
+          "schema" : {
+            "type" : "integer"
+          },
+          "style" : "form"
+        }, {
+          "explode" : false,
+          "in" : "path",
+          "name" : "type",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/components/schemas/groupType"
+          },
+          "style" : "simple"
+        }, {
+          "description" : "the ID of the label to retrieve",
+          "explode" : false,
+          "in" : "path",
+          "name" : "groupId",
+          "required" : true,
+          "schema" : {
+            "type" : "integer"
+          },
+          "style" : "simple"
+        } ],
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_9"
+                }
+              }
+            },
+            "description" : "Sends back an array of labels configured in the platform.",
+            "headers" : {
+              "X-Organization-Rate-Limit-Limit" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Limit"
+              },
+              "X-Organization-Rate-Limit-Remaining" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Remaining"
+              },
+              "X-Organization-Rate-Limit-Reset" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Reset"
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        }, {
+          "basicAuth" : [ ]
+        } ],
+        "summary" : "Returns a list of all labels (formerly called groups) configured in ThousandEyes.",
+        "tags" : [ "Labels" ]
+      }
+    },
+    "/groups/{type}/new" : {
+      "post" : {
+        "description" : "In order to create a new label, the user attempting the creation must have sufficient privileges to create labels.<br><br> Regular users are blocked from using any of the POST-based methods.<br><br> Note: When creating or updating a label and assigning agents or tests, the user needs permission to modify the objects being added.\n",
+        "parameters" : [ {
+          "description" : "Specifies the account group context of the request, obtained from the /account-groups endpoint. Specifying this parameter without the user being assigned to the target account will result in an error response.",
+          "explode" : true,
+          "in" : "query",
+          "name" : "aid",
+          "required" : false,
+          "schema" : {
+            "type" : "integer"
+          },
+          "style" : "form"
+        }, {
+          "explode" : false,
+          "in" : "path",
+          "name" : "type",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/components/schemas/groupType"
+          },
+          "style" : "simple"
+        } ],
+        "requestBody" : {
+          "$ref" : "#/components/requestBodies/inline_object",
+          "content" : {
+            "application/json" : {
+              "example" : {
+                "name" : "Dave's new group",
+                "tests" : [ {
+                  "testId" : 5048
+                }, {
+                  "testId" : 6600
+                } ]
+              },
+              "schema" : {
+                "properties" : {
+                  "name" : {
+                    "description" : "the name of the new label - this must be unique.",
+                    "type" : "string"
+                  },
+                  "tests" : {
+                    "items" : {
+                      "$ref" : "#/components/schemas/_groups__type__new_tests"
+                    },
+                    "type" : "array"
+                  },
+                  "agents" : {
+                    "items" : {
+                      "$ref" : "#/components/schemas/_groups__type__new_agents"
+                    },
+                    "type" : "array"
+                  }
+                },
+                "required" : [ "name" ],
+                "type" : "object"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "201" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_201"
+                }
+              }
+            },
+            "description" : "the label definition",
+            "headers" : {
+              "X-Organization-Rate-Limit-Limit" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Limit"
+              },
+              "X-Organization-Rate-Limit-Remaining" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Remaining"
+              },
+              "X-Organization-Rate-Limit-Reset" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Reset"
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        }, {
+          "basicAuth" : [ ]
+        } ],
+        "summary" : "Creates a new label (formerly called group) in ThousandEyes, based on properties provided in the POST data.",
+        "tags" : [ "Labels" ]
+      }
+    },
+    "/groups/{groupId}/update" : {
+      "post" : {
+        "description" : "In order to edit a label, the user must have access to the target label, and have access to modify the objects that the label contains. For example, to update an agent label, the user needs the Edit Agents permission assigned to their role.<br><br> Regular users are blocked from using any of the POST-based methods.<br><br> Note: When creating or updating a label and assigning agents or tests, the user needs permission to modify the objects being added.\n",
+        "parameters" : [ {
+          "description" : "Specifies the account group context of the request, obtained from the /account-groups endpoint. Specifying this parameter without the user being assigned to the target account will result in an error response.",
+          "explode" : true,
+          "in" : "query",
+          "name" : "aid",
+          "required" : false,
+          "schema" : {
+            "type" : "integer"
+          },
+          "style" : "form"
+        }, {
+          "description" : "the label that you wish to update, found in either the `/groups` or the `/groups/{type}` endpoint.",
+          "explode" : false,
+          "in" : "path",
+          "name" : "groupId",
+          "required" : true,
+          "schema" : {
+            "type" : "integer"
+          },
+          "style" : "simple"
+        } ],
+        "requestBody" : {
+          "$ref" : "#/components/requestBodies/inline_object_1",
+          "content" : {
+            "application/json" : {
+              "example" : {
+                "name" : "Dave's new group",
+                "tests" : [ {
+                  "testId" : 5048
+                }, {
+                  "testId" : 6600
+                } ]
+              },
+              "schema" : {
+                "properties" : {
+                  "name" : {
+                    "description" : "the name of the new label - this must be unique.",
+                    "type" : "string"
+                  },
+                  "tests" : {
+                    "items" : {
+                      "$ref" : "#/components/schemas/_groups__type__new_tests"
+                    },
+                    "type" : "array"
+                  },
+                  "agents" : {
+                    "items" : {
+                      "$ref" : "#/components/schemas/_groups__type__new_agents"
+                    },
+                    "type" : "array"
+                  }
+                },
+                "required" : [ "name" ],
+                "type" : "object"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_201"
+                }
+              }
+            },
+            "description" : "the label definition",
+            "headers" : {
+              "X-Organization-Rate-Limit-Limit" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Limit"
+              },
+              "X-Organization-Rate-Limit-Remaining" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Remaining"
+              },
+              "X-Organization-Rate-Limit-Reset" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Reset"
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        }, {
+          "basicAuth" : [ ]
+        } ],
+        "summary" : "Updates a label (formerly called group) in ThousandEyes, based on properties provided in the POST data.",
+        "tags" : [ "Labels" ]
+      }
+    },
+    "/groups/{groupId}/delete" : {
+      "post" : {
+        "description" : "Note that built-in labels (with negative groupId numbers) are not eligible for deletion.\n",
+        "parameters" : [ {
+          "description" : "Specifies the account group context of the request, obtained from the /account-groups endpoint. Specifying this parameter without the user being assigned to the target account will result in an error response.",
+          "explode" : true,
+          "in" : "query",
+          "name" : "aid",
+          "required" : false,
+          "schema" : {
+            "type" : "integer"
+          },
+          "style" : "form"
+        }, {
+          "description" : "the label that you wish to delete, found in either the `/groups` or the `/groups/{type}` endpoint.",
+          "explode" : false,
+          "in" : "path",
+          "name" : "groupId",
+          "required" : true,
+          "schema" : {
+            "type" : "integer"
+          },
+          "style" : "simple"
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "If a label is successfully deleted, an HTTP/204 NO CONTENT response will be returned, and an empty JSON response will be in the body of the response.",
+            "headers" : {
+              "X-Organization-Rate-Limit-Limit" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Limit"
+              },
+              "X-Organization-Rate-Limit-Remaining" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Remaining"
+              },
+              "X-Organization-Rate-Limit-Reset" : {
+                "$ref" : "#/components/headers/X-Organization-Rate-Limit-Reset"
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        }, {
+          "basicAuth" : [ ]
+        } ],
+        "summary" : "Deletes a label (formerly called group) currently configured in ThousandEyes.",
+        "tags" : [ "Labels" ]
+      }
+    }
+  },
+  "components" : {
+    "headers" : {
+      "X-Organization-Rate-Limit-Limit" : {
+        "description" : "Request limit per minute.",
+        "explode" : false,
+        "schema" : {
+          "type" : "integer"
+        },
+        "style" : "simple"
+      },
+      "X-Organization-Rate-Limit-Remaining" : {
+        "description" : "The number of requests left for the time window.",
+        "explode" : false,
+        "schema" : {
+          "type" : "integer"
+        },
+        "style" : "simple"
+      },
+      "X-Organization-Rate-Limit-Reset" : {
+        "description" : "The UTC date/time at which the current rate limit window resets.",
+        "explode" : false,
+        "schema" : {
+          "format" : "timestamp",
+          "type" : "integer"
+        },
+        "style" : "simple"
+      }
+    },
+    "parameters" : {
+      "aid" : {
+        "description" : "Specifies the account group context of the request, obtained from the /account-groups endpoint. Specifying this parameter without the user being assigned to the target account will result in an error response.",
+        "explode" : true,
+        "in" : "query",
+        "name" : "aid",
+        "required" : false,
+        "schema" : {
+          "type" : "integer"
+        },
+        "style" : "form"
+      },
+      "agentTypes" : {
+        "description" : "Specifies the type of agents requested. Accepts either a single allowed value or a comma-separated list of allowed values",
+        "explode" : false,
+        "in" : "query",
+        "name" : "agentTypes",
+        "required" : false,
+        "schema" : {
+          "$ref" : "#/components/schemas/agentType"
+        },
+        "style" : "form"
+      },
+      "window" : {
+        "description" : "The window parameter is used to specify an amount of time in the past for which to fetch data. That is, data will be retrieved from the specified amount of time ago up until the time of the request. A time window is a number followed by an optional time interval type. The supported time interval types are s for seconds, m for minutes, h for hours, d for days, and w for weeks. If no time interval type is specified, seconds are assumed. For example, window=10d would retrieve data from the last 10 days, window=12h would retrieve data from the last 12 hours, and window=1200 will retrieve data from the last 1200 seconds.",
+        "explode" : true,
+        "in" : "query",
+        "name" : "window",
+        "required" : false,
+        "schema" : {
+          "pattern" : "^[0-9]+[smhdw]?$",
+          "type" : "string"
+        },
+        "style" : "form"
+      },
+      "from" : {
+        "description" : "`YYYY-mm-ddTHH:MM:SS` specifies an explicit start for your range of data. The to parameter is optional – if omitted, the current time (at the time of the request) will be assumed. Dates must be specified in the ISO 8601 date-time format, with hyphens between date fields and colons between time fields. The full time (hours, minutes, and seconds) must be included. The date and time can be separated by either a space or the letter T. Example: 2012-01-01T00:00:00. The date range is inclusive. Time zone is UTC.",
+        "explode" : true,
+        "in" : "query",
+        "name" : "from",
+        "required" : false,
+        "schema" : {
+          "format" : "date-time",
+          "type" : "string"
+        },
+        "style" : "form"
+      },
+      "to" : {
+        "description" : "`YYYY-mm-ddTHH:MM:SS` specifies an explicit end for your range of data. The to parameter is optional – if omitted, the current time (at the time of the request) will be assumed. Dates must be specified in the ISO 8601 date-time format, with hyphens between date fields and colons between time fields. The full time (hours, minutes, and seconds) must be included. The date and time can be separated by either a space or the letter T. Example: 2012-01-01T00:00:00. The date range is inclusive. Time zone is UTC.<br><br>**Note** The `from`/`to` and `window` parameters are mutually exclusive – the server will produce a 400 error if both `window` and either `from` or `to` is specified. It will also produce a 400 error if `to` is specified without `from`.",
+        "explode" : true,
+        "in" : "query",
+        "name" : "to",
+        "required" : false,
+        "schema" : {
+          "format" : "date-time",
+          "type" : "string"
+        },
+        "style" : "form"
+      },
+      "groupType" : {
+        "explode" : false,
+        "in" : "path",
+        "name" : "type",
+        "required" : true,
+        "schema" : {
+          "$ref" : "#/components/schemas/groupType"
+        },
+        "style" : "simple"
+      }
+    },
+    "requestBodies" : {
+      "inline_object_1" : {
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/inline_object_1"
+            }
+          }
+        },
+        "required" : true
+      },
+      "inline_object" : {
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/inline_object"
+            }
+          }
+        },
+        "required" : true
+      }
+    },
+    "responses" : {
+      "200" : {
+        "description" : "OK - Nearly every response"
+      },
+      "201" : {
+        "description" : "CREATED - Using the `/tests/{testType}/new endpoint`"
+      },
+      "204" : {
+        "description" : "NO CONTENT - Using the `/tests/{testType}/{testId}/delete` endpoint"
+      },
+      "301" : {
+        "description" : "MOVED PERMANENTLY - Requests accessing a nonexistent version of the API"
+      },
+      "400" : {
+        "description" : "BAD REQUEST - Malformatted requests"
+      },
+      "401" : {
+        "description" : "UNAUTHORIZED - Invalid credentials provided or account is locked"
+      },
+      "403" : {
+        "description" : "FORBIDDEN - Insufficient permissions to execute request (ie, any POST method as a regular user)"
+      },
+      "404" : {
+        "description" : "NOT FOUND - Attempting to access an endpoint that does not exist"
+      },
+      "405" : {
+        "description" : "METHOD NOT ALLOWED - Wrong request type for target endpoint (ie, POSTing data to a GET endpoint)"
+      },
+      "406" : {
+        "description" : "NOT ACCEPTABLE - Can be returned when the Content Type of the data returned does not match the Accept header of the request"
+      },
+      "415" : {
+        "description" : "NOT ACCEPTABLE - Can be returned when the Content Type of the data returned does not match the Accept header of the request"
+      },
+      "429" : {
+        "description" : "TOO MANY REQUESTS - You have exceeded the max number of requests per 1-minute period"
+      },
+      "500" : {
+        "description" : "INTERNAL SERVER ERROR - Contact support@thousandeyes.com if you see this error type"
+      },
+      "503" : {
+        "description" : "SERVICE UNAVAILABLE - The ThousandEyes API is currently in maintenance mode."
+      }
+    },
+    "schemas" : {
+      "testType" : {
+        "description" : "type of test being queried; This is a read only value, as test type is implicit in the test creation url.",
+        "enum" : [ "agent-to-server", "http-server" ],
+        "type" : "string"
+      },
+      "testInterval" : {
+        "description" : "value in seconds",
+        "enum" : [ 120, 300, 600, 900, 1800, 3600 ],
+        "type" : "integer"
+      },
+      "baseTest" : {
+        "properties" : {
+          "alertsEnabled" : {
+            "description" : "choose 1 to enable alerts, or 0 to disable alerts. Defaults to 1",
+            "example" : false,
+            "type" : "boolean"
+          },
+          "alertRules" : {
+            "description" : "array of alert rule objects `{\"ruleId\": ruleId}`; get ruleId from `/alert-rules` endpoint. If alertsEnabled is set to 1 and alertRules is not included in a creation/update query, applicable defaults will be used.",
+            "items" : {
+              "$ref" : "#/components/schemas/baseTest_alertRules"
+            },
+            "type" : "array"
+          },
+          "apiLinks" : {
+            "description" : "array of apiLinks objects, showing rel and href elements; Read only; self links to endpoint to pull test metadata, and data links to endpoint for test data",
+            "items" : {
+              "$ref" : "#/components/schemas/baseTest_apiLinks"
+            },
+            "type" : "array"
+          },
+          "createdBy" : {
+            "description" : "Username (email@company.com); read only",
+            "example" : "Username (email@company.com)",
+            "format" : "string",
+            "type" : "string"
+          },
+          "createdDate" : {
+            "description" : "YYYY-MM-DD HH:mm:ss formatted date; read only; shown in UTC",
+            "format" : "date-time",
+            "type" : "string"
+          },
+          "description" : {
+            "description" : "defaults to empty string",
+            "format" : "string",
+            "type" : "string"
+          },
+          "enabled" : {
+            "description" : "choose 1 to enable the test, 0 to disable the test",
+            "example" : false,
+            "type" : "boolean"
+          },
+          "groups" : {
+            "description" : "array of label objects (`\"groups\": [ { \"name\": \"groupName\", \"groupId\": groupId, \"builtIn\": 0}]`); get groupId from /groupsendpoint.",
+            "items" : {
+              "$ref" : "#/components/schemas/group"
+            },
+            "type" : "array"
+          },
+          "modifiedBy" : {
+            "description" : "Username (email@company.com); read only",
+            "example" : "Username (email@company.com)",
+            "format" : "string",
+            "type" : "string"
+          },
+          "modifiedDate" : {
+            "description" : "YYYY-MM-DD HH:mm:ss formatted date; read only; shown in UTC",
+            "format" : "date-time",
+            "type" : "string"
+          },
+          "savedEvent" : {
+            "description" : "read only; indicates 1 for a saved event, 0 for a normal test",
+            "example" : false,
+            "type" : "boolean"
+          },
+          "sharedWithAccounts" : {
+            "description" : "array of account group objects (`\"sharedWithAccounts\": [{\"aid\": aid, \"name\": \"AccountGroupName\"}]`); Test is shared with the listed accout groups. Get aid and name from account-groups endpoint.",
+            "items" : {
+              "$ref" : "#/components/schemas/baseTest_sharedWithAccounts"
+            },
+            "type" : "array"
+          },
+          "testId" : {
+            "description" : "unique ID of test; read only; each test is assigned a unique ID; this is used to access test data from other endpoints.",
+            "format" : "int64",
+            "minimum" : 1,
+            "type" : "integer"
+          },
+          "testName" : {
+            "description" : "Test name must be unique",
+            "format" : "string",
+            "type" : "string"
+          },
+          "type" : {
+            "$ref" : "#/components/schemas/testType"
+          }
+        },
+        "type" : "object"
+      },
+      "shareableTest" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/baseTest"
+        }, {
+          "$ref" : "#/components/schemas/shareableTest_allOf"
+        } ]
+      },
+      "serverTest" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/shareableTest"
+        }, {
+          "$ref" : "#/components/schemas/serverTest_allOf"
+        } ]
+      },
+      "httpTest" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/serverTest"
+        }, {
+          "$ref" : "#/components/schemas/httpTest_allOf"
+        } ]
+      },
+      "agentToServerTest" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/serverTest"
+        }, {
+          "$ref" : "#/components/schemas/agentToServerTest_allOf"
+        } ]
+      },
+      "cloudAgent" : {
+        "properties" : {
+          "agentId" : {
+            "description" : "unique ID of agent",
+            "format" : "int32",
+            "type" : "integer"
+          },
+          "agentName" : {
+            "description" : "display name of the agent",
+            "type" : "string"
+          },
+          "agentType" : {
+            "allOf" : [ {
+              "$ref" : "#/components/schemas/agentType"
+            }, {
+              "description" : "Cloud, Enterprise or Enterprise Cluster, shows the type of agent"
+            } ]
+          },
+          "countryId" : {
+            "description" : "ISO-3166-1 alpha-2 country code of the agent",
+            "format" : "ISO-3166-1",
+            "type" : "string"
+          },
+          "ipAddresses" : {
+            "description" : "array of ipAddress entries",
+            "items" : {
+              "format" : "ipv4 | ipv6",
+              "type" : "string"
+            },
+            "type" : "array"
+          },
+          "location" : {
+            "description" : "location of the agent",
+            "type" : "string"
+          },
+          "groups" : {
+            "items" : {
+              "$ref" : "#/components/schemas/group"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object"
+      },
+      "enterpriseAgent" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/cloudAgent"
+        }, {
+          "$ref" : "#/components/schemas/enterpriseAgent_allOf"
+        } ]
+      },
+      "enterpriseClusterAgent" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/cloudAgent"
+        }, {
+          "$ref" : "#/components/schemas/enterpriseClusterAgent_allOf"
+        } ]
+      },
+      "enterpriseClusterMember" : {
+        "properties" : {
+          "name" : {
+            "$ref" : "#/components/schemas/cloudAgent/properties/agentName"
+          },
+          "ipAddresses" : {
+            "$ref" : "#/components/schemas/cloudAgent/properties/ipAddresses"
+          },
+          "errorDetails" : {
+            "$ref" : "#/components/schemas/enterpriseAgent/allOf/1/properties/errorDetails"
+          },
+          "lastSeen" : {
+            "$ref" : "#/components/schemas/enterpriseAgent/allOf/1/properties/lastSeen"
+          },
+          "memberId" : {
+            "$ref" : "#/components/schemas/cloudAgent/properties/agentId"
+          },
+          "network" : {
+            "$ref" : "#/components/schemas/enterpriseAgent/allOf/1/properties/network"
+          },
+          "prefix" : {
+            "$ref" : "#/components/schemas/enterpriseAgent/allOf/1/properties/prefix"
+          },
+          "publicIpAddresses" : {
+            "$ref" : "#/components/schemas/enterpriseAgent/allOf/1/properties/publicIpAddresses"
+          },
+          "targetForTests" : {
+            "$ref" : "#/components/schemas/enterpriseAgent/allOf/1/properties/targetForTests"
+          },
+          "agentState" : {
+            "$ref" : "#/components/schemas/enterpriseAgent/allOf/1/properties/agentState"
+          }
+        },
+        "type" : "object"
+      },
+      "agentType" : {
+        "items" : {
+          "enum" : [ "CLOUD", "ENTERPRISE", "ENTERPRISE_CLUSTER" ],
+          "type" : "string"
+        },
+        "type" : "array"
+      },
+      "alert" : {
+        "properties" : {
+          "alertId" : {
+            "description" : "unique ID of the alert; each alert occurrence is assigned a new unique ID",
+            "format" : "int64",
+            "type" : "integer"
+          },
+          "testId" : {
+            "description" : "unique ID of the test (see `/tests/{testId}` endpoint for more detail)",
+            "format" : "int64",
+            "type" : "integer"
+          },
+          "ruleId" : {
+            "description" : "unique ID of the alert rule (see `/alert-rules` endpoint for more detail)",
+            "format" : "int64",
+            "type" : "integer"
+          },
+          "testName" : {
+            "description" : "name of the test",
+            "type" : "string"
+          },
+          "active" : {
+            "description" : "0 for inactive, 1 for active, 2 for disabled. Alert is disabled if either alert rule itself has been deleted or the test it is applied to has been disabled, deleted, disabled alerting, or disassociated the alert rule from the test",
+            "enum" : [ 0, 1, 2 ],
+            "type" : "integer"
+          },
+          "ruleExpression" : {
+            "description" : "string expression of alert rule",
+            "type" : "string"
+          },
+          "dateStart" : {
+            "description" : "the date/time where an alert rule was triggered, expressed in UTC",
+            "format" : "date-time",
+            "type" : "string"
+          },
+          "dateEnd" : {
+            "description" : "the date/time where the alert was marked as cleared, expressed in UTC",
+            "format" : "date-time",
+            "type" : "string"
+          },
+          "violationCount" : {
+            "description" : "number of sources currently meeting the alert criteria",
+            "format" : "int32",
+            "type" : "integer"
+          },
+          "ruleName" : {
+            "description" : "name of the alert rule",
+            "type" : "string"
+          },
+          "permalink" : {
+            "description" : "hyperlink to alerts list, with row expanded",
+            "format" : "url",
+            "type" : "string"
+          },
+          "type" : {
+            "description" : "type of alert being triggered",
+            "type" : "string"
+          },
+          "agents" : {
+            "description" : "array of agents where the alert has at some point been active since the point that the alert was triggered. Not shown on BGP alerts.",
+            "items" : {
+              "$ref" : "#/components/schemas/alertAgentObj"
+            },
+            "type" : "array"
+          },
+          "monitors" : {
+            "description" : "array of agents where the alert has at some point been active since the point that the alert was triggered. Not shown on BGP alerts.",
+            "items" : {
+              "$ref" : "#/components/schemas/alertMonitorObj"
+            },
+            "type" : "array"
+          },
+          "apiLinks" : {
+            "description" : "list of hyperlinks to other areas of the API",
+            "items" : {
+              "$ref" : "#/components/schemas/alert_apiLinks"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object"
+      },
+      "alertObj" : {
+        "properties" : {
+          "dateStart" : {
+            "description" : "reflects the date that the source began reporting a measurement that exceeded the alert rule’s threshold, expressed in UTC",
+            "format" : "date-time",
+            "type" : "string"
+          },
+          "dateEnd" : {
+            "description" : "reflects the earlier of the date that the alert was cleared, or the source reported a measurement that was under the alert rule’s threshold, expressed in UTC",
+            "format" : "date-time",
+            "type" : "string"
+          },
+          "active" : {
+            "description" : "if the particular source is alerting when the API is queried, this flag will be set to 1. After an alert has cleared, this flag (regardless of the source’s metrics) will be set to 0, even if the particular source has not cleared the alert rule.",
+            "type" : "boolean"
+          },
+          "metricsAtStart" : {
+            "description" : "string representation of the metric at the time that the source began alerting. Note that the alert start and dateStart for a particular source do not need to be the same, as sources may change alerting status throughout an alert’s lifecycle",
+            "type" : "string"
+          },
+          "metricsAtEnd" : {
+            "description" : "string representation of the metric or metrics being considered in the alert rule at the point that the alert was cleared. If the alert is not yet cleared, this field reflects the last round of data gathered from the source.",
+            "type" : "string"
+          },
+          "permalink" : {
+            "description" : "hyperlink to alerts list, with row expanded",
+            "format" : "url",
+            "type" : "string"
+          }
+        },
+        "type" : "object"
+      },
+      "alertAgentObj" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/alertObj"
+        }, {
+          "$ref" : "#/components/schemas/alertAgentObj_allOf"
+        } ]
+      },
+      "alertMonitorObj" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/alertObj"
+        }, {
+          "$ref" : "#/components/schemas/alertMonitorObj_allOf"
+        } ]
+      },
+      "alertRule" : {
+        "properties" : {
+          "ruleId" : {
+            "description" : "unique ID of the alert rule",
+            "format" : "int64",
+            "type" : "integer"
+          },
+          "ruleName" : {
+            "description" : "name of the alert rule",
+            "type" : "string"
+          },
+          "expression" : {
+            "description" : "string expression of alert rule",
+            "externalDocs" : {
+              "description" : "API Doc",
+              "url" : "https://developer.thousandeyes.com/v6/alerts/#/alert_rule_metadata"
+            },
+            "type" : "string"
+          },
+          "direction" : {
+            "description" : "optional field with one of the following values: `TO_TARGET`, `FROM_TARGET`, `BIDIRECTIONAL`, for applicable alert types (eg. path trace, End-to-End (Agent) etc.)",
+            "enum" : [ "TO_TARGET", "FROM_TARGET", "BIDIRECTIONAL" ],
+            "type" : "string"
+          },
+          "notifyOnClear" : {
+            "description" : "1 to send notification when alert clears",
+            "type" : "boolean"
+          },
+          "default" : {
+            "description" : "Alert rules allow up to 1 alert rule to be selected as a default for each type. By checking the default option, this alert rule will be automatically included on subsequently created tests that test a metric used in alerting here",
+            "type" : "boolean"
+          },
+          "alertType" : {
+            "description" : "type of alert rule, as determined by metric selection",
+            "type" : "string"
+          },
+          "minimumSources" : {
+            "description" : "the minimum number of agents or monitors that must meet the specified criteria in order to trigger the alert",
+            "format" : "int64",
+            "type" : "integer"
+          },
+          "minimumSourcesPct" : {
+            "description" : "the minimum percentage of all assigned agents or monitors that must meet the specified criteria in order to trigger the alert",
+            "format" : "percent",
+            "type" : "integer"
+          },
+          "roundsViolationgMode" : {
+            "description" : "`EXACT` requires that the same agent(s) meet the threshold in consecutive rounds; default is `ANY`",
+            "enum" : [ "EXACT", "ANY" ],
+            "type" : "string"
+          },
+          "roundsViolatingOutOf" : {
+            "description" : "specifies the divisor (y value) for the “X of Y times” condition.",
+            "format" : "int64",
+            "type" : "integer"
+          },
+          "roundsViolationRequired" : {
+            "description" : "specifies the numerator (x value) for the “X of Y times” condition",
+            "format" : "int64",
+            "type" : "integer"
+          },
+          "testIds" : {
+            "items" : {
+              "description" : "valid test Ids",
+              "type" : "integer"
+            },
+            "type" : "array"
+          },
+          "includeCoveredPrefixes" : {
+            "description" : "set to 1 to include covered prefixes in the BGP alert rule. Only applicable to BGP alert rules",
+            "type" : "boolean"
+          },
+          "notifications" : {
+            "description" : "Alert notification object",
+            "items" : {
+              "$ref" : "#/components/schemas/alertRule_notifications"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object"
+      },
+      "alertRuleDetail" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/alertRule"
+        }, {
+          "$ref" : "#/components/schemas/alertRuleDetail_allOf"
+        } ]
+      },
+      "integrationObj" : {
+        "properties" : {
+          "integrationId" : {
+            "description" : "unique ID of the integration",
+            "type" : "integer"
+          },
+          "integrationName" : {
+            "description" : "name of the integration",
+            "type" : "string"
+          },
+          "integrationType" : {
+            "description" : "type of the integration",
+            "enum" : [ "WEBHOOK", "PAGER_DUTY", "SLACK" ],
+            "type" : "string"
+          },
+          "target" : {
+            "description" : "target URL of the integration",
+            "format" : "url",
+            "type" : "string"
+          }
+        },
+        "type" : "object"
+      },
+      "integrationPagerDuty" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/integrationObj"
+        }, {
+          "$ref" : "#/components/schemas/integrationPagerDuty_allOf"
+        } ]
+      },
+      "integrationSlack" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/integrationObj"
+        }, {
+          "$ref" : "#/components/schemas/integrationSlack_allOf"
+        } ]
+      },
+      "integrationWebhook" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/integrationObj"
+        } ]
+      },
+      "groupType" : {
+        "description" : "either `tests` or `agents`, indicates the type of label. To show only this label type, query the `/groups/{type}` endpoint.",
+        "enum" : [ "tests", "agents" ],
+        "type" : "string"
+      },
+      "group" : {
+        "properties" : {
+          "name" : {
+            "description" : "Name of the label",
+            "type" : "string"
+          },
+          "groupId" : {
+            "description" : "Unique ID of the label; this number is negative for built-in labels. Query the `/groups/{id}` endpoint to see a list of agents/tests with this label.",
+            "format" : "int32",
+            "type" : "integer"
+          },
+          "type" : {
+            "$ref" : "#/components/schemas/groupType"
+          },
+          "builtin" : {
+            "description" : "1 for built-in labels, and 0 for user-created labels. Note that built-in labels are read-only.",
+            "type" : "boolean"
+          }
+        },
+        "type" : "object"
+      },
+      "groupDetails" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/group"
+        }, {
+          "$ref" : "#/components/schemas/groupDetails_allOf"
+        } ]
+      },
+      "inline_response_200" : {
+        "properties" : {
+          "timestamp" : {
+            "example" : 1492606869263,
+            "format" : "timestamp",
+            "type" : "integer"
+          }
+        },
+        "type" : "object"
+      },
+      "inline_response_200_1" : {
+        "properties" : {
+          "test" : {
+            "items" : {
+              "oneOf" : [ {
+                "$ref" : "#/components/schemas/httpTest"
+              }, {
+                "$ref" : "#/components/schemas/agentToServerTest"
+              } ]
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object"
+      },
+      "inline_response_200_2" : {
+        "properties" : {
+          "agents" : {
+            "items" : {
+              "oneOf" : [ {
+                "$ref" : "#/components/schemas/cloudAgent"
+              }, {
+                "$ref" : "#/components/schemas/enterpriseAgent"
+              }, {
+                "$ref" : "#/components/schemas/enterpriseClusterAgent"
+              } ]
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object"
+      },
+      "inline_response_200_3" : {
+        "properties" : {
+          "alert" : {
+            "items" : {
+              "$ref" : "#/components/schemas/alert"
+            },
+            "type" : "array"
+          },
+          "pages" : {
+            "type" : "object"
+          },
+          "from" : {
+            "format" : "date-time",
+            "type" : "string"
+          },
+          "to" : {
+            "format" : "date-time",
+            "type" : "string"
+          }
+        },
+        "type" : "object"
+      },
+      "inline_response_200_4" : {
+        "properties" : {
+          "alert" : {
+            "items" : {
+              "$ref" : "#/components/schemas/alert"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object"
+      },
+      "inline_response_200_5" : {
+        "properties" : {
+          "alertRules" : {
+            "items" : {
+              "$ref" : "#/components/schemas/alertRule"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object"
+      },
+      "inline_response_200_6" : {
+        "properties" : {
+          "alertRules" : {
+            "items" : {
+              "$ref" : "#/components/schemas/alertRuleDetail"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object"
+      },
+      "inline_response_200_7_integrations" : {
+        "properties" : {
+          "thirdParty" : {
+            "items" : {
+              "oneOf" : [ {
+                "$ref" : "#/components/schemas/integrationPagerDuty"
+              }, {
+                "$ref" : "#/components/schemas/integrationSlack"
+              } ]
+            },
+            "type" : "array"
+          },
+          "webhook" : {
+            "items" : {
+              "$ref" : "#/components/schemas/integrationWebhook"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object"
+      },
+      "inline_response_200_7" : {
+        "properties" : {
+          "integrations" : {
+            "$ref" : "#/components/schemas/inline_response_200_7_integrations"
+          }
+        },
+        "type" : "object"
+      },
+      "inline_response_200_8" : {
+        "properties" : {
+          "groups" : {
+            "items" : {
+              "$ref" : "#/components/schemas/group"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object"
+      },
+      "inline_response_200_9" : {
+        "properties" : {
+          "groups" : {
+            "items" : {
+              "$ref" : "#/components/schemas/groupDetails"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object"
+      },
+      "_groups__type__new_tests" : {
+        "properties" : {
+          "testId" : {
+            "type" : "integer"
+          }
+        },
+        "type" : "object"
+      },
+      "_groups__type__new_agents" : {
+        "properties" : {
+          "agentId" : {
+            "type" : "integer"
+          }
+        },
+        "type" : "object"
+      },
+      "inline_object" : {
+        "properties" : {
+          "name" : {
+            "description" : "the name of the new label - this must be unique.",
+            "type" : "string"
+          },
+          "tests" : {
+            "items" : {
+              "$ref" : "#/components/schemas/_groups__type__new_tests"
+            },
+            "type" : "array"
+          },
+          "agents" : {
+            "items" : {
+              "$ref" : "#/components/schemas/_groups__type__new_agents"
+            },
+            "type" : "array"
+          }
+        },
+        "required" : [ "name" ],
+        "type" : "object"
+      },
+      "inline_response_201" : {
+        "properties" : {
+          "grpups" : {
+            "items" : {
+              "$ref" : "#/components/schemas/groupDetails"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object"
+      },
+      "inline_object_1" : {
+        "properties" : {
+          "name" : {
+            "description" : "the name of the new label - this must be unique.",
+            "type" : "string"
+          },
+          "tests" : {
+            "items" : {
+              "$ref" : "#/components/schemas/_groups__type__new_tests"
+            },
+            "type" : "array"
+          },
+          "agents" : {
+            "items" : {
+              "$ref" : "#/components/schemas/_groups__type__new_agents"
+            },
+            "type" : "array"
+          }
+        },
+        "required" : [ "name" ],
+        "type" : "object"
+      },
+      "baseTest_alertRules" : {
+        "properties" : {
+          "ruleId" : {
+            "format" : "int64",
+            "type" : "integer"
+          }
+        },
+        "type" : "object"
+      },
+      "baseTest_apiLinks" : {
+        "properties" : {
+          "rel" : {
+            "format" : "string",
+            "type" : "string"
+          },
+          "href" : {
+            "format" : "url",
+            "type" : "string"
+          }
+        },
+        "type" : "object"
+      },
+      "baseTest_sharedWithAccounts" : {
+        "properties" : {
+          "aid" : {
+            "format" : "int64",
+            "type" : "integer"
+          },
+          "name" : {
+            "format" : "string",
+            "type" : "string"
+          }
+        },
+        "type" : "object"
+      },
+      "shareableTest_allOf" : {
+        "properties" : {
+          "liveShare" : {
+            "description" : "read only; indicates 1 for a test shared with your account group, 0 for a normal test",
+            "type" : "boolean"
+          }
+        },
+        "type" : "object"
+      },
+      "serverTest_allOf_agents" : {
+        "properties" : {
+          "agentId" : {
+            "format" : "int64",
+            "type" : "integer"
+          }
+        },
+        "type" : "object"
+      },
+      "serverTest_allOf_bgpMonitors" : {
+        "properties" : {
+          "monitorId" : {
+            "format" : "int64",
+            "type" : "integer"
+          }
+        },
+        "type" : "object"
+      },
+      "serverTest_allOf" : {
+        "properties" : {
+          "agents" : {
+            "description" : "array of agent objects `{\"agentId\": agentId}`; get agentId from /agents endpoint.",
+            "items" : {
+              "$ref" : "#/components/schemas/serverTest_allOf_agents"
+            },
+            "type" : "array"
+          },
+          "bandwidthMeasurements" : {
+            "description" : "set to 1 to measure bandwidth. Only applies to Enterprise Agents assigned to the test, and requires that networkMeasurements is set.",
+            "type" : "boolean"
+          },
+          "bgpMeasurements" : {
+            "description" : "choose 1 to enable bgp measurements, 0 to disable; defaults to 1 when networkMeasurements is set",
+            "type" : "boolean"
+          },
+          "bgpMonitors" : {
+            "description" : "array of BGP Monitor objects `{\"monitorId\": monitorId}`; get monitorId from /bgp-monitors endpoint.",
+            "items" : {
+              "$ref" : "#/components/schemas/serverTest_allOf_bgpMonitors"
+            },
+            "type" : "array"
+          },
+          "interval" : {
+            "$ref" : "#/components/schemas/testInterval"
+          },
+          "mtuMeasurements" : {
+            "description" : "set to 1 to measure MTU sizes on network from agents to the target",
+            "type" : "boolean"
+          },
+          "networkMeasurements" : {
+            "description" : "choose 1 to enable network measurements, 0 to disable; defaults to 1",
+            "type" : "boolean"
+          },
+          "numPathTraces" : {
+            "description" : "defaults to 3",
+            "format" : "int32",
+            "maximum" : 3,
+            "minimum" : 10,
+            "type" : "integer"
+          },
+          "pathTraceMode" : {
+            "description" : "choose `inSession` to perform the path trace within a TCP session; defaults to `classic`",
+            "enum" : [ "classic", "inSession" ],
+            "type" : "string"
+          },
+          "probeMode" : {
+            "description" : "probe mode used by End-to-end Network Test; only valid if `protocol` is set to `TCP`; defaults to `AUTO`",
+            "enum" : [ "AUTO", "SACK", "SYN" ],
+            "type" : "string"
+          },
+          "protocol" : {
+            "description" : "protocol used by dependent Network tests (End-to-end, Path Trace, PMTUD); defaults to `TCP`",
+            "enum" : [ "ICMP", "TCP" ],
+            "type" : "string"
+          }
+        },
+        "type" : "object"
+      },
+      "httpTest_allOf" : {
+        "properties" : {
+          "authType" : {
+            "description" : "HTTP Authentication type; defaults to NONE",
+            "enum" : [ "NONE", "BASIC", "NTLM", "KERBEROS" ],
+            "type" : "string"
+          },
+          "clientCertificate" : {
+            "description" : "String representation (containing newline characters) of client certificate, if used",
+            "format" : "pem",
+            "type" : "string"
+          },
+          "contentRegex" : {
+            "description" : "This field does not require escaping",
+            "format" : "string",
+            "type" : "string"
+          },
+          "desiredStatusCode" : {
+            "description" : "Set to the value you’re interested in retrieving.",
+            "format" : "string",
+            "type" : "string"
+          },
+          "downloadLimit" : {
+            "description" : "specify maximum number of bytes to download from the target object",
+            "format" : "int32",
+            "type" : "integer"
+          },
+          "dnsOverride" : {
+            "description" : "IP address to use for DNS override",
+            "format" : "ipv4 | ipv6",
+            "type" : "string"
+          },
+          "followRedirects" : {
+            "description" : "set to 0 to not follow HTTP/301 or HTTP/302 redirect directives. Default is 1",
+            "type" : "boolean"
+          },
+          "headers" : {
+            "description" : "array of header strings `[\"header: value\", \"header2: value\"]`; use HTTP header values in this list",
+            "items" : {
+              "format" : "header: value",
+              "type" : "string"
+            },
+            "type" : "array"
+          },
+          "httpVersion" : {
+            "description" : "2 for default (prefer HTTP/2), 1 for HTTP/1.1 only",
+            "enum" : [ 1, 2 ],
+            "type" : "integer"
+          },
+          "httpTargetTime" : {
+            "description" : "target time for HTTP server completion; specified in milliseconds",
+            "format" : "int32",
+            "maximum" : 5000,
+            "minimum" : 100,
+            "type" : "integer"
+          },
+          "httpTimeLimit" : {
+            "description" : "defaults to 5 seconds",
+            "format" : "int32",
+            "maximum" : 5,
+            "minimum" : 60,
+            "type" : "integer"
+          },
+          "password" : {
+            "description" : "password to be used for Basic/NTLM authentication",
+            "format" : "password",
+            "type" : "string"
+          },
+          "postBody" : {
+            "description" : "Enter the post body in this field. No escaping is required. If the post body is set to something other than empty, the requestMethod will be set to POST.",
+            "format" : "string",
+            "type" : "string"
+          },
+          "sslVersion" : {
+            "description" : "Read Only; corresponds to sslVersionId; Reflects the verbose ssl protocol version used by a test",
+            "format" : "string",
+            "type" : "string"
+          },
+          "sslVersionId" : {
+            "description" : "0 for auto, 3 for SSLv3, 4 for TLS v1.0, 5 for TLS v1.1, 6 for TLS v1.2",
+            "enum" : [ 0, 3, 4, 5, 6 ],
+            "type" : "integer"
+          },
+          "url" : {
+            "description" : "target for the test",
+            "format" : "string",
+            "type" : "string"
+          },
+          "useNtlm" : {
+            "description" : "choose 1 to use NTLM, 0 to use Basic Authentication. Requires username/password to be set",
+            "type" : "boolean"
+          },
+          "userAgent" : {
+            "description" : "user-agent string to be provided during the test",
+            "format" : "string",
+            "type" : "string"
+          },
+          "username" : {
+            "description" : "username to be used for Basic/NTLM authentication",
+            "format" : "string",
+            "type" : "string"
+          },
+          "verifyCertificate" : {
+            "description" : "set to 0 to ignore certificate errors (defaults to 1)",
+            "type" : "boolean"
+          }
+        },
+        "type" : "object"
+      },
+      "agentToServerTest_allOf" : {
+        "properties" : {
+          "port" : {
+            "description" : "if protocol is TCP, defaults to port 80. Protocol and port (shown below) are mutually exclusive - if ICMP is selected and port is provided, the request will error.",
+            "format" : "int32",
+            "maximum" : 65535,
+            "minimum" : 1,
+            "type" : "integer"
+          },
+          "server" : {
+            "description" : "target name or IP address",
+            "format" : "host | ipv4 | ipv6",
+            "type" : "string"
+          }
+        },
+        "type" : "object"
+      },
+      "enterpriseAgent_allOf_errorDetails" : {
+        "properties" : {
+          "code" : {
+            "type" : "string"
+          },
+          "description" : {
+            "type" : "string"
+          }
+        },
+        "type" : "object"
+      },
+      "enterpriseAgent_allOf" : {
+        "properties" : {
+          "hostname" : {
+            "description" : "fully qualified domain name of the agent",
+            "format" : "host",
+            "type" : "string"
+          },
+          "prefix" : {
+            "description" : "Network prefix, expressed in CIDR format",
+            "type" : "string"
+          },
+          "enabled" : {
+            "description" : "1 for enabled, 0 for disabled",
+            "format" : "int32",
+            "type" : "boolean"
+          },
+          "network" : {
+            "description" : "name of the autonomous system in which the Agent is found",
+            "type" : "string"
+          },
+          "createdDate" : {
+            "description" : "yyyy-MM-dd hh:mm:ss, expressed in UTC",
+            "format" : "date-time",
+            "type" : "string"
+          },
+          "lastSeen" : {
+            "description" : "yyyy-MM-dd hh:mm:ss, expressed in UTC",
+            "format" : "date-time",
+            "type" : "string"
+          },
+          "agentState" : {
+            "enum" : [ "Online", "Offline", "Disabled" ],
+            "type" : "string"
+          },
+          "verifySslCertificates" : {
+            "description" : "1 for enabled, 0 for disabled",
+            "type" : "boolean"
+          },
+          "keepBrowserCache" : {
+            "description" : "1 for enabled, 0 for disabled",
+            "type" : "boolean"
+          },
+          "utilization" : {
+            "description" : "shows overall utilization percentage",
+            "format" : "percentage",
+            "type" : "integer"
+          },
+          "ipv6Policy" : {
+            "description" : "IP version policy",
+            "enum" : [ "FORCE_IPV4", "PREFER_IPV6", "FORCE_IPV6" ],
+            "type" : "string"
+          },
+          "targetForTests" : {
+            "description" : "target IP address or domain name representing test destination when agent is acting as a test target in an agent-to-agent test",
+            "format" : "host | ipv4 | ipv6",
+            "type" : "string"
+          },
+          "publicIpAddresses" : {
+            "description" : "array of ipAddress entries",
+            "items" : {
+              "format" : "ipv4 | ipv6",
+              "type" : "string"
+            },
+            "type" : "array"
+          },
+          "errorDetails" : {
+            "$ref" : "#/components/schemas/enterpriseAgent_allOf_errorDetails"
+          },
+          "accountGroups" : {
+            "description" : "list of account groups to which the agent is assigned, showing aid and accountGroupName fields",
+            "items" : {
+              "type" : "object"
+            },
+            "type" : "array"
+          },
+          "notificationRules" : {
+            "description" : "array of notification rule objects configured on agent",
+            "items" : {
+              "type" : "object"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object"
+      },
+      "enterpriseClusterAgent_allOf" : {
+        "properties" : {
+          "clusterMembers" : {
+            "description" : "detailed information about each cluster member",
+            "items" : {
+              "$ref" : "#/components/schemas/enterpriseClusterMember"
+            },
+            "type" : "array"
+          },
+          "enabled" : {
+            "$ref" : "#/components/schemas/enterpriseAgent/allOf/1/properties/enabled"
+          },
+          "verifySslCertificates" : {
+            "$ref" : "#/components/schemas/enterpriseAgent/allOf/1/properties/verifySslCertificates"
+          },
+          "keepBrowserCache" : {
+            "$ref" : "#/components/schemas/enterpriseAgent/allOf/1/properties/keepBrowserCache"
+          },
+          "ipv6Policy" : {
+            "$ref" : "#/components/schemas/enterpriseAgent/allOf/1/properties/ipv6Policy"
+          },
+          "createdDate" : {
+            "$ref" : "#/components/schemas/enterpriseAgent/allOf/1/properties/createdDate"
+          },
+          "errorDetails" : {
+            "$ref" : "#/components/schemas/enterpriseAgent/allOf/1/properties/errorDetails"
+          },
+          "accountGroups" : {
+            "$ref" : "#/components/schemas/enterpriseAgent/allOf/1/properties/accountGroups"
+          },
+          "notificationRules" : {
+            "$ref" : "#/components/schemas/enterpriseAgent/allOf/1/properties/notificationRules"
+          }
+        },
+        "type" : "object"
+      },
+      "alert_apiLinks" : {
+        "properties" : {
+          "rel" : {
+            "type" : "string"
+          },
+          "href" : {
+            "format" : "url",
+            "type" : "string"
+          }
+        },
+        "type" : "object"
+      },
+      "alertAgentObj_allOf" : {
+        "properties" : {
+          "agentId" : {
+            "description" : "unique ID of agent violating the alert rule. See `/agents` for more detail",
+            "format" : "int32",
+            "type" : "integer"
+          },
+          "agentName" : {
+            "description" : "display name of the agent violating the alert rule",
+            "type" : "string"
+          }
+        },
+        "type" : "object"
+      },
+      "alertMonitorObj_allOf" : {
+        "properties" : {
+          "monitorId" : {
+            "description" : "unique ID of monitor violating the alert rule. See `/bgp-monitors` for more detail",
+            "format" : "int32",
+            "type" : "integer"
+          },
+          "monitorName" : {
+            "description" : "display name of the monitor violating the alert rule",
+            "type" : "string"
+          }
+        },
+        "type" : "object"
+      },
+      "alertRule_email" : {
+        "properties" : {
+          "message" : {
+            "type" : "string"
+          },
+          "recipient" : {
+            "items" : {
+              "format" : "email",
+              "type" : "string"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object"
+      },
+      "alertRule_notifications" : {
+        "properties" : {
+          "email" : {
+            "$ref" : "#/components/schemas/alertRule_email"
+          },
+          "thirdParty" : {
+            "items" : {
+              "oneOf" : [ {
+                "$ref" : "#/components/schemas/integrationPagerDuty"
+              }, {
+                "$ref" : "#/components/schemas/integrationSlack"
+              } ]
+            },
+            "type" : "array"
+          },
+          "webhook" : {
+            "items" : {
+              "$ref" : "#/components/schemas/integrationWebhook"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object"
+      },
+      "alertRuleDetail_allOf" : {
+        "properties" : {
+          "tests" : {
+            "description" : "list of tests alert rule is assigned to",
+            "items" : {
+              "oneOf" : [ {
+                "$ref" : "#/components/schemas/httpTest"
+              }, {
+                "$ref" : "#/components/schemas/agentToServerTest"
+              } ]
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object"
+      },
+      "integrationPagerDuty_allOf" : {
+        "properties" : {
+          "authMethod" : {
+            "enum" : [ "Auth Token" ],
+            "type" : "string"
+          },
+          "authUser" : {
+            "description" : "PagerDuty user",
+            "type" : "string"
+          },
+          "authToken" : {
+            "description" : "authentication token",
+            "type" : "string"
+          }
+        },
+        "type" : "object"
+      },
+      "integrationSlack_allOf" : {
+        "properties" : {
+          "channel" : {
+            "type" : "string"
+          }
+        },
+        "type" : "object"
+      },
+      "groupDetails_allOf" : {
+        "properties" : {
+          "agents" : {
+            "description" : "Agent objects are shown for an `agents` type label only.",
+            "items" : {
+              "type" : "object"
+            },
+            "type" : "array"
+          },
+          "tests" : {
+            "description" : "Test objects are shown for a `tests` type label only.",
+            "items" : {
+              "oneOf" : [ {
+                "$ref" : "#/components/schemas/httpTest"
+              }, {
+                "$ref" : "#/components/schemas/agentToServerTest"
+              } ]
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object"
+      }
+    },
+    "securitySchemes" : {
+      "bearerAuth" : {
+        "bearerFormat" : "token",
+        "scheme" : "bearer",
+        "type" : "http"
+      },
+      "basicAuth" : {
+        "scheme" : "basic",
+        "type" : "http"
+      }
+    }
+  }
+}
