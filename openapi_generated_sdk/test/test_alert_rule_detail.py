@@ -12,16 +12,6 @@ import sys
 import unittest
 
 import openapi_client
-from openapi_client.model.agent_to_server_test import AgentToServerTest
-from openapi_client.model.alert_rule import AlertRule
-from openapi_client.model.alert_rule_detail_all_of import AlertRuleDetailAllOf
-from openapi_client.model.alert_rule_notifications import AlertRuleNotifications
-from openapi_client.model.http_test import HttpTest
-globals()['AgentToServerTest'] = AgentToServerTest
-globals()['AlertRule'] = AlertRule
-globals()['AlertRuleDetailAllOf'] = AlertRuleDetailAllOf
-globals()['AlertRuleNotifications'] = AlertRuleNotifications
-globals()['HttpTest'] = HttpTest
 from openapi_client.model.alert_rule_detail import AlertRuleDetail
 
 

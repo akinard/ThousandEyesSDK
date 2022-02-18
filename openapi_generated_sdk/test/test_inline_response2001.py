@@ -12,10 +12,8 @@ import sys
 import unittest
 
 import openapi_client
-from openapi_client.model.agent_to_server_test import AgentToServerTest
-from openapi_client.model.http_test import HttpTest
-globals()['AgentToServerTest'] = AgentToServerTest
-globals()['HttpTest'] = HttpTest
+from openapi_client.model.base_test import BaseTest
+globals()['BaseTest'] = BaseTest
 from openapi_client.model.inline_response2001 import InlineResponse2001
 
 

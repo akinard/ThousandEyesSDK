@@ -12,10 +12,6 @@ import sys
 import unittest
 
 import openapi_client
-from openapi_client.model.integration_obj import IntegrationObj
-from openapi_client.model.integration_slack_all_of import IntegrationSlackAllOf
-globals()['IntegrationObj'] = IntegrationObj
-globals()['IntegrationSlackAllOf'] = IntegrationSlackAllOf
 from openapi_client.model.integration_slack import IntegrationSlack
 
 

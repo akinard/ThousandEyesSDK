@@ -13,11 +13,7 @@ import unittest
 
 import openapi_client
 from openapi_client.model.cloud_agent import CloudAgent
-from openapi_client.model.enterprise_agent import EnterpriseAgent
-from openapi_client.model.enterprise_cluster_agent import EnterpriseClusterAgent
 globals()['CloudAgent'] = CloudAgent
-globals()['EnterpriseAgent'] = EnterpriseAgent
-globals()['EnterpriseClusterAgent'] = EnterpriseClusterAgent
 from openapi_client.model.inline_response2002 import InlineResponse2002
 
 

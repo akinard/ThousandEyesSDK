@@ -12,15 +12,15 @@ import sys
 import unittest
 
 import openapi_client
-from openapi_client.model.alert_rule_email import AlertRuleEmail
-from openapi_client.model.integration_obj import IntegrationObj
-globals()['AlertRuleEmail'] = AlertRuleEmail
-globals()['IntegrationObj'] = IntegrationObj
+from openapi_client.model.alert_rule import AlertRule
 from openapi_client.model.alert_rule_notifications import AlertRuleNotifications
+globals()['AlertRule'] = AlertRule
+globals()['AlertRuleNotifications'] = AlertRuleNotifications
+from openapi_client.model.workaround_alert_rule_all_of import WorkaroundAlertRuleAllOf
 
 
-class TestAlertRuleNotifications(unittest.TestCase):
-    """AlertRuleNotifications unit test stubs"""
+class TestWorkaroundAlertRuleAllOf(unittest.TestCase):
+    """WorkaroundAlertRuleAllOf unit test stubs"""
 
     def setUp(self):
         pass
@@ -28,10 +28,10 @@ class TestAlertRuleNotifications(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testAlertRuleNotifications(self):
-        """Test AlertRuleNotifications"""
+    def testWorkaroundAlertRuleAllOf(self):
+        """Test WorkaroundAlertRuleAllOf"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = AlertRuleNotifications()  # noqa: E501
+        # model = WorkaroundAlertRuleAllOf()  # noqa: E501
         pass
 
 

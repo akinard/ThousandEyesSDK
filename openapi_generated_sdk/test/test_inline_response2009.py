@@ -12,8 +12,8 @@ import sys
 import unittest
 
 import openapi_client
-from openapi_client.model.group_details import GroupDetails
-globals()['GroupDetails'] = GroupDetails
+from openapi_client.model.group import Group
+globals()['Group'] = Group
 from openapi_client.model.inline_response2009 import InlineResponse2009
 
 

@@ -12,10 +12,6 @@ import sys
 import unittest
 
 import openapi_client
-from openapi_client.model.alert_agent_obj_all_of import AlertAgentObjAllOf
-from openapi_client.model.alert_obj import AlertObj
-globals()['AlertAgentObjAllOf'] = AlertAgentObjAllOf
-globals()['AlertObj'] = AlertObj
 from openapi_client.model.alert_agent_obj import AlertAgentObj
 
 

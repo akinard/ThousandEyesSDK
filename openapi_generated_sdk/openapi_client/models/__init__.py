@@ -71,3 +71,5 @@ from openapi_client.model.shareable_test import ShareableTest
 from openapi_client.model.shareable_test_all_of import ShareableTestAllOf
 from openapi_client.model.test_interval import TestInterval
 from openapi_client.model.test_type import TestType
+from openapi_client.model.workaround_agent_to_server_test import WorkaroundAgentToServerTest
+from openapi_client.model.workaround_alert_rule_all_of import WorkaroundAlertRuleAllOf

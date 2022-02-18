@@ -12,10 +12,6 @@ import sys
 import unittest
 
 import openapi_client
-from openapi_client.model.integration_obj import IntegrationObj
-from openapi_client.model.integration_pager_duty_all_of import IntegrationPagerDutyAllOf
-globals()['IntegrationObj'] = IntegrationObj
-globals()['IntegrationPagerDutyAllOf'] = IntegrationPagerDutyAllOf
 from openapi_client.model.integration_pager_duty import IntegrationPagerDuty
 
 

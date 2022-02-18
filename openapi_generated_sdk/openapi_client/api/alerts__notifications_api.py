@@ -21,13 +21,12 @@ from openapi_client.model_utils import (  # noqa: F401
     none_type,
     validate_and_convert_types
 )
-from openapi_client.model.alert_rule import AlertRule
 from openapi_client.model.inline_response2003 import InlineResponse2003
 from openapi_client.model.inline_response2004 import InlineResponse2004
 from openapi_client.model.inline_response2005 import InlineResponse2005
 from openapi_client.model.inline_response2006 import InlineResponse2006
 from openapi_client.model.inline_response2007 import InlineResponse2007
-from openapi_client.model.unknownbasetype import UNKNOWNBASETYPE
+from openapi_client.model.workaround_alert_rule_all_of import WorkaroundAlertRuleAllOf
 
 
 class AlertsNotificationsApi(object):
@@ -105,14 +104,13 @@ class AlertsNotificationsApi(object):
             },
             params_map={
                 'all': [
-                    'unknown_base_type',
+                    'workaround_alert_rule_all_of',
                     'aid',
                 ],
                 'required': [
-                    'unknown_base_type',
+                    'workaround_alert_rule_all_of',
                 ],
                 'nullable': [
-                    'unknown_base_type',
                 ],
                 'enum': [
                 ],
@@ -125,8 +123,8 @@ class AlertsNotificationsApi(object):
                 'allowed_values': {
                 },
                 'openapi_types': {
-                    'unknown_base_type':
-                        (UNKNOWN_BASE_TYPE,),
+                    'workaround_alert_rule_all_of':
+                        (WorkaroundAlertRuleAllOf,),
                     'aid':
                         (int,),
                 },
@@ -134,7 +132,7 @@ class AlertsNotificationsApi(object):
                     'aid': 'aid',
                 },
                 'location_map': {
-                    'unknown_base_type': 'body',
+                    'workaround_alert_rule_all_of': 'body',
                     'aid': 'query',
                 },
                 'collection_format_map': {
@@ -277,15 +275,14 @@ class AlertsNotificationsApi(object):
             params_map={
                 'all': [
                     'rule_id',
-                    'unknown_base_type',
+                    'workaround_alert_rule_all_of',
                     'aid',
                 ],
                 'required': [
                     'rule_id',
-                    'unknown_base_type',
+                    'workaround_alert_rule_all_of',
                 ],
                 'nullable': [
-                    'unknown_base_type',
                 ],
                 'enum': [
                 ],
@@ -300,8 +297,8 @@ class AlertsNotificationsApi(object):
                 'openapi_types': {
                     'rule_id':
                         (int,),
-                    'unknown_base_type':
-                        (UNKNOWN_BASE_TYPE,),
+                    'workaround_alert_rule_all_of':
+                        (WorkaroundAlertRuleAllOf,),
                     'aid':
                         (int,),
                 },
@@ -311,7 +308,7 @@ class AlertsNotificationsApi(object):
                 },
                 'location_map': {
                     'rule_id': 'path',
-                    'unknown_base_type': 'body',
+                    'workaround_alert_rule_all_of': 'body',
                     'aid': 'query',
                 },
                 'collection_format_map': {
@@ -582,7 +579,7 @@ class AlertsNotificationsApi(object):
 
     def alert_rules_new_post(
         self,
-        unknown_base_type,
+        workaround_alert_rule_all_of,
         **kwargs
     ):
         """Creates a new alert rule in your account, based on properties provided in the POST data.  # noqa: E501
@@ -591,11 +588,11 @@ class AlertsNotificationsApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.alert_rules_new_post(unknown_base_type, async_req=True)
+        >>> thread = api.alert_rules_new_post(workaround_alert_rule_all_of, async_req=True)
         >>> result = thread.get()
 
         Args:
-            unknown_base_type (UNKNOWN_BASE_TYPE):
+            workaround_alert_rule_all_of (WorkaroundAlertRuleAllOf):
 
         Keyword Args:
             aid (int): Specifies the account group context of the request, obtained from the /account-groups endpoint. Specifying this parameter without the user being assigned to the target account will result in an error response.. [optional]
@@ -655,8 +652,8 @@ class AlertsNotificationsApi(object):
         kwargs['_content_type'] = kwargs.get(
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['unknown_base_type'] = \
-            unknown_base_type
+        kwargs['workaround_alert_rule_all_of'] = \
+            workaround_alert_rule_all_of
         return self.alert_rules_new_post_endpoint.call_with_http_info(**kwargs)
 
     def alert_rules_rule_id_delete_post(
@@ -819,7 +816,7 @@ class AlertsNotificationsApi(object):
     def alert_rules_rule_id_update_post(
         self,
         rule_id,
-        unknown_base_type,
+        workaround_alert_rule_all_of,
         **kwargs
     ):
         """Modifies an existing alert rule in your account, based on properties provided in the POST data.  # noqa: E501
@@ -828,12 +825,12 @@ class AlertsNotificationsApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.alert_rules_rule_id_update_post(rule_id, unknown_base_type, async_req=True)
+        >>> thread = api.alert_rules_rule_id_update_post(rule_id, workaround_alert_rule_all_of, async_req=True)
         >>> result = thread.get()
 
         Args:
             rule_id (int): the ID of the rule to update
-            unknown_base_type (UNKNOWN_BASE_TYPE):
+            workaround_alert_rule_all_of (WorkaroundAlertRuleAllOf):
 
         Keyword Args:
             aid (int): Specifies the account group context of the request, obtained from the /account-groups endpoint. Specifying this parameter without the user being assigned to the target account will result in an error response.. [optional]
@@ -895,8 +892,8 @@ class AlertsNotificationsApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['rule_id'] = \
             rule_id
-        kwargs['unknown_base_type'] = \
-            unknown_base_type
+        kwargs['workaround_alert_rule_all_of'] = \
+            workaround_alert_rule_all_of
         return self.alert_rules_rule_id_update_post_endpoint.call_with_http_info(**kwargs)
 
     def alerts_alert_id_get(

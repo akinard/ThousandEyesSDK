@@ -12,8 +12,6 @@ import sys
 import unittest
 
 import openapi_client
-from openapi_client.model.integration_obj import IntegrationObj
-globals()['IntegrationObj'] = IntegrationObj
 from openapi_client.model.integration_webhook import IntegrationWebhook
 
 

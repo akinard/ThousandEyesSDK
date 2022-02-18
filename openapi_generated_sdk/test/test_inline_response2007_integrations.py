@@ -12,12 +12,8 @@ import sys
 import unittest
 
 import openapi_client
-from openapi_client.model.integration_pager_duty import IntegrationPagerDuty
-from openapi_client.model.integration_slack import IntegrationSlack
-from openapi_client.model.integration_webhook import IntegrationWebhook
-globals()['IntegrationPagerDuty'] = IntegrationPagerDuty
-globals()['IntegrationSlack'] = IntegrationSlack
-globals()['IntegrationWebhook'] = IntegrationWebhook
+from openapi_client.model.integration_obj import IntegrationObj
+globals()['IntegrationObj'] = IntegrationObj
 from openapi_client.model.inline_response2007_integrations import InlineResponse2007Integrations
 
 

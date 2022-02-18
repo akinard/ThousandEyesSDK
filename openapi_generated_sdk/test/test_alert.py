@@ -12,12 +12,10 @@ import sys
 import unittest
 
 import openapi_client
-from openapi_client.model.alert_agent_obj import AlertAgentObj
 from openapi_client.model.alert_api_links import AlertApiLinks
-from openapi_client.model.alert_monitor_obj import AlertMonitorObj
-globals()['AlertAgentObj'] = AlertAgentObj
+from openapi_client.model.alert_obj import AlertObj
 globals()['AlertApiLinks'] = AlertApiLinks
-globals()['AlertMonitorObj'] = AlertMonitorObj
+globals()['AlertObj'] = AlertObj
 from openapi_client.model.alert import Alert
 
 

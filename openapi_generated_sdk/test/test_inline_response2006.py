@@ -12,8 +12,8 @@ import sys
 import unittest
 
 import openapi_client
-from openapi_client.model.alert_rule_detail import AlertRuleDetail
-globals()['AlertRuleDetail'] = AlertRuleDetail
+from openapi_client.model.alert_rule import AlertRule
+globals()['AlertRule'] = AlertRule
 from openapi_client.model.inline_response2006 import InlineResponse2006
 
 

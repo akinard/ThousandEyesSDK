@@ -12,20 +12,6 @@ import sys
 import unittest
 
 import openapi_client
-from openapi_client.model.base_test import BaseTest
-from openapi_client.model.base_test_alert_rules import BaseTestAlertRules
-from openapi_client.model.base_test_api_links import BaseTestApiLinks
-from openapi_client.model.base_test_shared_with_accounts import BaseTestSharedWithAccounts
-from openapi_client.model.group import Group
-from openapi_client.model.shareable_test_all_of import ShareableTestAllOf
-from openapi_client.model.test_type import TestType
-globals()['BaseTest'] = BaseTest
-globals()['BaseTestAlertRules'] = BaseTestAlertRules
-globals()['BaseTestApiLinks'] = BaseTestApiLinks
-globals()['BaseTestSharedWithAccounts'] = BaseTestSharedWithAccounts
-globals()['Group'] = Group
-globals()['ShareableTestAllOf'] = ShareableTestAllOf
-globals()['TestType'] = TestType
 from openapi_client.model.shareable_test import ShareableTest
 
 

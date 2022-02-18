@@ -12,26 +12,6 @@ import sys
 import unittest
 
 import openapi_client
-from openapi_client.model.agent_to_server_test_all_of import AgentToServerTestAllOf
-from openapi_client.model.base_test_alert_rules import BaseTestAlertRules
-from openapi_client.model.base_test_api_links import BaseTestApiLinks
-from openapi_client.model.base_test_shared_with_accounts import BaseTestSharedWithAccounts
-from openapi_client.model.group import Group
-from openapi_client.model.server_test import ServerTest
-from openapi_client.model.server_test_all_of_agents import ServerTestAllOfAgents
-from openapi_client.model.server_test_all_of_bgp_monitors import ServerTestAllOfBgpMonitors
-from openapi_client.model.test_interval import TestInterval
-from openapi_client.model.test_type import TestType
-globals()['AgentToServerTestAllOf'] = AgentToServerTestAllOf
-globals()['BaseTestAlertRules'] = BaseTestAlertRules
-globals()['BaseTestApiLinks'] = BaseTestApiLinks
-globals()['BaseTestSharedWithAccounts'] = BaseTestSharedWithAccounts
-globals()['Group'] = Group
-globals()['ServerTest'] = ServerTest
-globals()['ServerTestAllOfAgents'] = ServerTestAllOfAgents
-globals()['ServerTestAllOfBgpMonitors'] = ServerTestAllOfBgpMonitors
-globals()['TestInterval'] = TestInterval
-globals()['TestType'] = TestType
 from openapi_client.model.agent_to_server_test import AgentToServerTest
 
 

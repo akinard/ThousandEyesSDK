@@ -186,6 +186,8 @@ Class | Method | HTTP request | Description
  - [ShareableTestAllOf](docs/ShareableTestAllOf.md)
  - [TestInterval](docs/TestInterval.md)
  - [TestType](docs/TestType.md)
+ - [WorkaroundAgentToServerTest](docs/WorkaroundAgentToServerTest.md)
+ - [WorkaroundAlertRuleAllOf](docs/WorkaroundAlertRuleAllOf.md)
 
 
 ## Documentation For Authorization

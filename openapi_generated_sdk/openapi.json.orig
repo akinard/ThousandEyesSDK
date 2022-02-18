@@ -833,7 +833,11 @@
                 "testIds" : [ 1001, 1002 ]
               },
               "schema" : {
+                "allOf" : [ {
                   "$ref" : "#/components/schemas/alertRule"
+                }, {
+                  "required" : [ "alertType", "expression", "roundsViolatingOutOf", "roundsViolatingRequired", "ruleName" ]
+                } ]
               }
             }
           },
@@ -928,7 +932,11 @@
                 "testIds" : [ 1001, 1002 ]
               },
               "schema" : {
+                "allOf" : [ {
                   "$ref" : "#/components/schemas/alertRule"
+                }, {
+                  "required" : [ "alertType", "expression", "roundsViolatingOutOf", "roundsViolatingRequired", "ruleName" ]
+                } ]
               }
             }
           },
@@ -1782,16 +1790,32 @@
         "type" : "object"
       },
       "shareableTest" : {
+        "allOf" : [ {
           "$ref" : "#/components/schemas/baseTest"
+        }, {
+          "$ref" : "#/components/schemas/shareableTest_allOf"
+        } ]
       },
       "serverTest" : {
+        "allOf" : [ {
           "$ref" : "#/components/schemas/shareableTest"
+        }, {
+          "$ref" : "#/components/schemas/serverTest_allOf"
+        } ]
       },
       "httpTest" : {
+        "allOf" : [ {
           "$ref" : "#/components/schemas/serverTest"
+        }, {
+          "$ref" : "#/components/schemas/httpTest_allOf"
+        } ]
       },
       "agentToServerTest" : {
+        "allOf" : [ {
           "$ref" : "#/components/schemas/serverTest"
+        }, {
+          "$ref" : "#/components/schemas/agentToServerTest_allOf"
+        } ]
       },
       "cloudAgent" : {
         "properties" : {
@@ -1805,7 +1829,11 @@
             "type" : "string"
           },
           "agentType" : {
+            "allOf" : [ {
               "$ref" : "#/components/schemas/agentType"
+            }, {
+              "description" : "Cloud, Enterprise or Enterprise Cluster, shows the type of agent"
+            } ]
           },
           "countryId" : {
             "description" : "ISO-3166-1 alpha-2 country code of the agent",
@@ -1834,10 +1862,18 @@
         "type" : "object"
       },
       "enterpriseAgent" : {
+        "allOf" : [ {
           "$ref" : "#/components/schemas/cloudAgent"
+        }, {
+          "$ref" : "#/components/schemas/enterpriseAgent_allOf"
+        } ]
       },
       "enterpriseClusterAgent" : {
+        "allOf" : [ {
           "$ref" : "#/components/schemas/cloudAgent"
+        }, {
+          "$ref" : "#/components/schemas/enterpriseClusterAgent_allOf"
+        } ]
       },
       "enterpriseClusterMember" : {
         "properties" : {
@@ -1996,10 +2032,18 @@
         "type" : "object"
       },
       "alertAgentObj" : {
+        "allOf" : [ {
           "$ref" : "#/components/schemas/alertObj"
+        }, {
+          "$ref" : "#/components/schemas/alertAgentObj_allOf"
+        } ]
       },
       "alertMonitorObj" : {
+        "allOf" : [ {
           "$ref" : "#/components/schemas/alertObj"
+        }, {
+          "$ref" : "#/components/schemas/alertMonitorObj_allOf"
+        } ]
       },
       "alertRule" : {
         "properties" : {
@@ -2084,7 +2128,11 @@
         "type" : "object"
       },
       "alertRuleDetail" : {
+        "allOf" : [ {
           "$ref" : "#/components/schemas/alertRule"
+        }, {
+          "$ref" : "#/components/schemas/alertRuleDetail_allOf"
+        } ]
       },
       "integrationObj" : {
         "properties" : {
@@ -2110,13 +2158,23 @@
         "type" : "object"
       },
       "integrationPagerDuty" : {
+        "allOf" : [ {
           "$ref" : "#/components/schemas/integrationObj"
+        }, {
+          "$ref" : "#/components/schemas/integrationPagerDuty_allOf"
+        } ]
       },
       "integrationSlack" : {
+        "allOf" : [ {
           "$ref" : "#/components/schemas/integrationObj"
+        }, {
+          "$ref" : "#/components/schemas/integrationSlack_allOf"
+        } ]
       },
       "integrationWebhook" : {
+        "allOf" : [ {
           "$ref" : "#/components/schemas/integrationObj"
+        } ]
       },
       "groupType" : {
         "description" : "either `tests` or `agents`, indicates the type of label. To show only this label type, query the `/groups/{type}` endpoint.",
@@ -2145,7 +2203,11 @@
         "type" : "object"
       },
       "groupDetails" : {
+        "allOf" : [ {
           "$ref" : "#/components/schemas/group"
+        }, {
+          "$ref" : "#/components/schemas/groupDetails_allOf"
+        } ]
       },
       "inline_response_200" : {
         "properties" : {

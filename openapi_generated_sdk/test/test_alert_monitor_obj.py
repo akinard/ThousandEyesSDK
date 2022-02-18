@@ -12,10 +12,6 @@ import sys
 import unittest
 
 import openapi_client
-from openapi_client.model.alert_monitor_obj_all_of import AlertMonitorObjAllOf
-from openapi_client.model.alert_obj import AlertObj
-globals()['AlertMonitorObjAllOf'] = AlertMonitorObjAllOf
-globals()['AlertObj'] = AlertObj
 from openapi_client.model.alert_monitor_obj import AlertMonitorObj
 
 

@@ -21,11 +21,9 @@ from openapi_client.model_utils import (  # noqa: F401
     none_type,
     validate_and_convert_types
 )
-from openapi_client.model.agent_to_server_test import AgentToServerTest
-from openapi_client.model.http_test import HttpTest
 from openapi_client.model.inline_response2001 import InlineResponse2001
 from openapi_client.model.test_type import TestType
-from openapi_client.model.unknownbasetype import UNKNOWNBASETYPE
+from openapi_client.model.workaround_agent_to_server_test import WorkaroundAgentToServerTest
 
 
 class TestsApi(object):
@@ -218,15 +216,14 @@ class TestsApi(object):
             params_map={
                 'all': [
                     'test_type',
-                    'unknown_base_type',
+                    'workaround_agent_to_server_test',
                     'aid',
                 ],
                 'required': [
                     'test_type',
-                    'unknown_base_type',
+                    'workaround_agent_to_server_test',
                 ],
                 'nullable': [
-                    'unknown_base_type',
                 ],
                 'enum': [
                 ],
@@ -241,8 +238,8 @@ class TestsApi(object):
                 'openapi_types': {
                     'test_type':
                         (TestType,),
-                    'unknown_base_type':
-                        (UNKNOWN_BASE_TYPE,),
+                    'workaround_agent_to_server_test':
+                        (WorkaroundAgentToServerTest,),
                     'aid':
                         (int,),
                 },
@@ -252,7 +249,7 @@ class TestsApi(object):
                 },
                 'location_map': {
                     'test_type': 'path',
-                    'unknown_base_type': 'body',
+                    'workaround_agent_to_server_test': 'body',
                     'aid': 'query',
                 },
                 'collection_format_map': {
@@ -345,16 +342,15 @@ class TestsApi(object):
                 'all': [
                     'test_type',
                     'test_id',
-                    'unknown_base_type',
+                    'workaround_agent_to_server_test',
                     'aid',
                 ],
                 'required': [
                     'test_type',
                     'test_id',
-                    'unknown_base_type',
+                    'workaround_agent_to_server_test',
                 ],
                 'nullable': [
-                    'unknown_base_type',
                 ],
                 'enum': [
                 ],
@@ -371,8 +367,8 @@ class TestsApi(object):
                         (TestType,),
                     'test_id':
                         (int,),
-                    'unknown_base_type':
-                        (UNKNOWN_BASE_TYPE,),
+                    'workaround_agent_to_server_test':
+                        (WorkaroundAgentToServerTest,),
                     'aid':
                         (int,),
                 },
@@ -384,7 +380,7 @@ class TestsApi(object):
                 'location_map': {
                     'test_type': 'path',
                     'test_id': 'path',
-                    'unknown_base_type': 'body',
+                    'workaround_agent_to_server_test': 'body',
                     'aid': 'query',
                 },
                 'collection_format_map': {
@@ -635,7 +631,7 @@ class TestsApi(object):
     def tests_test_type_new_post(
         self,
         test_type,
-        unknown_base_type,
+        workaround_agent_to_server_test,
         **kwargs
     ):
         """Creates a new test in ThousandEyes, based on properties provided in the POST data.  # noqa: E501
@@ -644,12 +640,12 @@ class TestsApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.tests_test_type_new_post(test_type, unknown_base_type, async_req=True)
+        >>> thread = api.tests_test_type_new_post(test_type, workaround_agent_to_server_test, async_req=True)
         >>> result = thread.get()
 
         Args:
             test_type (TestType):
-            unknown_base_type (UNKNOWN_BASE_TYPE): Request body should contain fields to be set during creation.
+            workaround_agent_to_server_test (WorkaroundAgentToServerTest): Request body should contain fields to be set during creation.
 
         Keyword Args:
             aid (int): Specifies the account group context of the request, obtained from the /account-groups endpoint. Specifying this parameter without the user being assigned to the target account will result in an error response.. [optional]
@@ -711,8 +707,8 @@ class TestsApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['test_type'] = \
             test_type
-        kwargs['unknown_base_type'] = \
-            unknown_base_type
+        kwargs['workaround_agent_to_server_test'] = \
+            workaround_agent_to_server_test
         return self.tests_test_type_new_post_endpoint.call_with_http_info(**kwargs)
 
     def tests_test_type_test_id_delete_post(
@@ -802,7 +798,7 @@ class TestsApi(object):
         self,
         test_type,
         test_id,
-        unknown_base_type,
+        workaround_agent_to_server_test,
         **kwargs
     ):
         """Updates a test in ThousandEyes, based on properties provided in the POST data.  # noqa: E501
@@ -811,13 +807,13 @@ class TestsApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.tests_test_type_test_id_update_post(test_type, test_id, unknown_base_type, async_req=True)
+        >>> thread = api.tests_test_type_test_id_update_post(test_type, test_id, workaround_agent_to_server_test, async_req=True)
         >>> result = thread.get()
 
         Args:
             test_type (TestType):
             test_id (int): corresponds to a testId of the type specified by `{testType}`, see the test list endpoint for a listing of tests
-            unknown_base_type (UNKNOWN_BASE_TYPE): Request body should contain fields to be set during creation.
+            workaround_agent_to_server_test (WorkaroundAgentToServerTest): Request body should contain fields to be set during creation.
 
         Keyword Args:
             aid (int): Specifies the account group context of the request, obtained from the /account-groups endpoint. Specifying this parameter without the user being assigned to the target account will result in an error response.. [optional]
@@ -881,7 +877,7 @@ class TestsApi(object):
             test_type
         kwargs['test_id'] = \
             test_id
-        kwargs['unknown_base_type'] = \
-            unknown_base_type
+        kwargs['workaround_agent_to_server_test'] = \
+            workaround_agent_to_server_test
         return self.tests_test_type_test_id_update_post_endpoint.call_with_http_info(**kwargs)
 

@@ -12,16 +12,6 @@ import sys
 import unittest
 
 import openapi_client
-from openapi_client.model.agent_to_server_test import AgentToServerTest
-from openapi_client.model.group import Group
-from openapi_client.model.group_details_all_of import GroupDetailsAllOf
-from openapi_client.model.group_type import GroupType
-from openapi_client.model.http_test import HttpTest
-globals()['AgentToServerTest'] = AgentToServerTest
-globals()['Group'] = Group
-globals()['GroupDetailsAllOf'] = GroupDetailsAllOf
-globals()['GroupType'] = GroupType
-globals()['HttpTest'] = HttpTest
 from openapi_client.model.group_details import GroupDetails
 
 

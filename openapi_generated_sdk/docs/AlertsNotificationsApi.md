@@ -98,7 +98,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **alert_rules_new_post**
-> InlineResponse2005 alert_rules_new_post(unknown_base_type)
+> InlineResponse2005 alert_rules_new_post(workaround_alert_rule_all_of)
 
 Creates a new alert rule in your account, based on properties provided in the POST data.
 
@@ -113,9 +113,8 @@ In order to create a new alert rule, the user attempting the creation must be in
 import time
 import openapi_client
 from openapi_client.api import alerts__notifications_api
-from openapi_client.model.alert_rule import AlertRule
-from openapi_client.model.unknownbasetype import UNKNOWNBASETYPE
 from openapi_client.model.inline_response2005 import InlineResponse2005
+from openapi_client.model.workaround_alert_rule_all_of import WorkaroundAlertRuleAllOf
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.thousandeyes.com/v6
 # See configuration.py for a list of all supported configuration parameters.
@@ -143,13 +142,13 @@ configuration = openapi_client.Configuration(
 with openapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = alerts__notifications_api.AlertsNotificationsApi(api_client)
-    unknown_base_type = None # UNKNOWN_BASE_TYPE | 
+    workaround_alert_rule_all_of = WorkaroundAlertRuleAllOf(None) # WorkaroundAlertRuleAllOf | 
     aid = 1 # int | Specifies the account group context of the request, obtained from the /account-groups endpoint. Specifying this parameter without the user being assigned to the target account will result in an error response. (optional)
 
     # example passing only required values which don't have defaults set
     try:
         # Creates a new alert rule in your account, based on properties provided in the POST data.
-        api_response = api_instance.alert_rules_new_post(unknown_base_type)
+        api_response = api_instance.alert_rules_new_post(workaround_alert_rule_all_of)
         pprint(api_response)
     except openapi_client.ApiException as e:
         print("Exception when calling AlertsNotificationsApi->alert_rules_new_post: %s\n" % e)
@@ -158,7 +157,7 @@ with openapi_client.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # Creates a new alert rule in your account, based on properties provided in the POST data.
-        api_response = api_instance.alert_rules_new_post(unknown_base_type, aid=aid)
+        api_response = api_instance.alert_rules_new_post(workaround_alert_rule_all_of, aid=aid)
         pprint(api_response)
     except openapi_client.ApiException as e:
         print("Exception when calling AlertsNotificationsApi->alert_rules_new_post: %s\n" % e)
@@ -169,7 +168,7 @@ with openapi_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **unknown_base_type** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md)|  |
+ **workaround_alert_rule_all_of** | [**WorkaroundAlertRuleAllOf**](WorkaroundAlertRuleAllOf.md)|  |
  **aid** | **int**| Specifies the account group context of the request, obtained from the /account-groups endpoint. Specifying this parameter without the user being assigned to the target account will result in an error response. | [optional]
 
 ### Return type
@@ -380,7 +379,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **alert_rules_rule_id_update_post**
-> InlineResponse2005 alert_rules_rule_id_update_post(rule_id, unknown_base_type)
+> InlineResponse2005 alert_rules_rule_id_update_post(rule_id, workaround_alert_rule_all_of)
 
 Modifies an existing alert rule in your account, based on properties provided in the POST data.
 
@@ -395,9 +394,8 @@ In order to modify an alert rule, the user attempting the creation must be in a 
 import time
 import openapi_client
 from openapi_client.api import alerts__notifications_api
-from openapi_client.model.alert_rule import AlertRule
-from openapi_client.model.unknownbasetype import UNKNOWNBASETYPE
 from openapi_client.model.inline_response2005 import InlineResponse2005
+from openapi_client.model.workaround_alert_rule_all_of import WorkaroundAlertRuleAllOf
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.thousandeyes.com/v6
 # See configuration.py for a list of all supported configuration parameters.
@@ -426,13 +424,13 @@ with openapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = alerts__notifications_api.AlertsNotificationsApi(api_client)
     rule_id = 1 # int | the ID of the rule to update
-    unknown_base_type = None # UNKNOWN_BASE_TYPE | 
+    workaround_alert_rule_all_of = WorkaroundAlertRuleAllOf(None) # WorkaroundAlertRuleAllOf | 
     aid = 1 # int | Specifies the account group context of the request, obtained from the /account-groups endpoint. Specifying this parameter without the user being assigned to the target account will result in an error response. (optional)
 
     # example passing only required values which don't have defaults set
     try:
         # Modifies an existing alert rule in your account, based on properties provided in the POST data.
-        api_response = api_instance.alert_rules_rule_id_update_post(rule_id, unknown_base_type)
+        api_response = api_instance.alert_rules_rule_id_update_post(rule_id, workaround_alert_rule_all_of)
         pprint(api_response)
     except openapi_client.ApiException as e:
         print("Exception when calling AlertsNotificationsApi->alert_rules_rule_id_update_post: %s\n" % e)
@@ -441,7 +439,7 @@ with openapi_client.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # Modifies an existing alert rule in your account, based on properties provided in the POST data.
-        api_response = api_instance.alert_rules_rule_id_update_post(rule_id, unknown_base_type, aid=aid)
+        api_response = api_instance.alert_rules_rule_id_update_post(rule_id, workaround_alert_rule_all_of, aid=aid)
         pprint(api_response)
     except openapi_client.ApiException as e:
         print("Exception when calling AlertsNotificationsApi->alert_rules_rule_id_update_post: %s\n" % e)
@@ -453,7 +451,7 @@ with openapi_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **rule_id** | **int**| the ID of the rule to update |
- **unknown_base_type** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md)|  |
+ **workaround_alert_rule_all_of** | [**WorkaroundAlertRuleAllOf**](WorkaroundAlertRuleAllOf.md)|  |
  **aid** | **int**| Specifies the account group context of the request, obtained from the /account-groups endpoint. Specifying this parameter without the user being assigned to the target account will result in an error response. | [optional]
 
 ### Return type

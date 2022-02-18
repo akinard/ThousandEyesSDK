@@ -287,7 +287,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **tests_test_type_new_post**
-> InlineResponse2001 tests_test_type_new_post(test_type, unknown_base_type)
+> InlineResponse2001 tests_test_type_new_post(test_type, workaround_agent_to_server_test)
 
 Creates a new test in ThousandEyes, based on properties provided in the POST data.
 
@@ -303,10 +303,8 @@ import time
 import openapi_client
 from openapi_client.api import tests_api
 from openapi_client.model.inline_response2001 import InlineResponse2001
-from openapi_client.model.unknownbasetype import UNKNOWNBASETYPE
-from openapi_client.model.agent_to_server_test import AgentToServerTest
 from openapi_client.model.test_type import TestType
-from openapi_client.model.http_test import HttpTest
+from openapi_client.model.workaround_agent_to_server_test import WorkaroundAgentToServerTest
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.thousandeyes.com/v6
 # See configuration.py for a list of all supported configuration parameters.
@@ -335,13 +333,13 @@ with openapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tests_api.TestsApi(api_client)
     test_type = TestType("agent-to-server") # TestType | 
-    unknown_base_type = None # UNKNOWN_BASE_TYPE | Request body should contain fields to be set during creation.
+    workaround_agent_to_server_test = WorkaroundAgentToServerTest(None) # WorkaroundAgentToServerTest | Request body should contain fields to be set during creation.
     aid = 1 # int | Specifies the account group context of the request, obtained from the /account-groups endpoint. Specifying this parameter without the user being assigned to the target account will result in an error response. (optional)
 
     # example passing only required values which don't have defaults set
     try:
         # Creates a new test in ThousandEyes, based on properties provided in the POST data.
-        api_response = api_instance.tests_test_type_new_post(test_type, unknown_base_type)
+        api_response = api_instance.tests_test_type_new_post(test_type, workaround_agent_to_server_test)
         pprint(api_response)
     except openapi_client.ApiException as e:
         print("Exception when calling TestsApi->tests_test_type_new_post: %s\n" % e)
@@ -350,7 +348,7 @@ with openapi_client.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # Creates a new test in ThousandEyes, based on properties provided in the POST data.
-        api_response = api_instance.tests_test_type_new_post(test_type, unknown_base_type, aid=aid)
+        api_response = api_instance.tests_test_type_new_post(test_type, workaround_agent_to_server_test, aid=aid)
         pprint(api_response)
     except openapi_client.ApiException as e:
         print("Exception when calling TestsApi->tests_test_type_new_post: %s\n" % e)
@@ -362,7 +360,7 @@ with openapi_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **test_type** | **TestType**|  |
- **unknown_base_type** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md)| Request body should contain fields to be set during creation. |
+ **workaround_agent_to_server_test** | [**WorkaroundAgentToServerTest**](WorkaroundAgentToServerTest.md)| Request body should contain fields to be set during creation. |
  **aid** | **int**| Specifies the account group context of the request, obtained from the /account-groups endpoint. Specifying this parameter without the user being assigned to the target account will result in an error response. | [optional]
 
 ### Return type
@@ -483,7 +481,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **tests_test_type_test_id_update_post**
-> InlineResponse2001 tests_test_type_test_id_update_post(test_type, test_id, unknown_base_type)
+> InlineResponse2001 tests_test_type_test_id_update_post(test_type, test_id, workaround_agent_to_server_test)
 
 Updates a test in ThousandEyes, based on properties provided in the POST data.
 
@@ -499,10 +497,8 @@ import time
 import openapi_client
 from openapi_client.api import tests_api
 from openapi_client.model.inline_response2001 import InlineResponse2001
-from openapi_client.model.unknownbasetype import UNKNOWNBASETYPE
-from openapi_client.model.agent_to_server_test import AgentToServerTest
 from openapi_client.model.test_type import TestType
-from openapi_client.model.http_test import HttpTest
+from openapi_client.model.workaround_agent_to_server_test import WorkaroundAgentToServerTest
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.thousandeyes.com/v6
 # See configuration.py for a list of all supported configuration parameters.
@@ -532,13 +528,13 @@ with openapi_client.ApiClient(configuration) as api_client:
     api_instance = tests_api.TestsApi(api_client)
     test_type = TestType("agent-to-server") # TestType | 
     test_id = 1 # int | corresponds to a testId of the type specified by `{testType}`, see the test list endpoint for a listing of tests
-    unknown_base_type = None # UNKNOWN_BASE_TYPE | Request body should contain fields to be set during creation.
+    workaround_agent_to_server_test = WorkaroundAgentToServerTest(None) # WorkaroundAgentToServerTest | Request body should contain fields to be set during creation.
     aid = 1 # int | Specifies the account group context of the request, obtained from the /account-groups endpoint. Specifying this parameter without the user being assigned to the target account will result in an error response. (optional)
 
     # example passing only required values which don't have defaults set
     try:
         # Updates a test in ThousandEyes, based on properties provided in the POST data.
-        api_response = api_instance.tests_test_type_test_id_update_post(test_type, test_id, unknown_base_type)
+        api_response = api_instance.tests_test_type_test_id_update_post(test_type, test_id, workaround_agent_to_server_test)
         pprint(api_response)
     except openapi_client.ApiException as e:
         print("Exception when calling TestsApi->tests_test_type_test_id_update_post: %s\n" % e)
@@ -547,7 +543,7 @@ with openapi_client.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # Updates a test in ThousandEyes, based on properties provided in the POST data.
-        api_response = api_instance.tests_test_type_test_id_update_post(test_type, test_id, unknown_base_type, aid=aid)
+        api_response = api_instance.tests_test_type_test_id_update_post(test_type, test_id, workaround_agent_to_server_test, aid=aid)
         pprint(api_response)
     except openapi_client.ApiException as e:
         print("Exception when calling TestsApi->tests_test_type_test_id_update_post: %s\n" % e)
@@ -560,7 +556,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **test_type** | **TestType**|  |
  **test_id** | **int**| corresponds to a testId of the type specified by &#x60;{testType}&#x60;, see the test list endpoint for a listing of tests |
- **unknown_base_type** | [**UNKNOWN_BASE_TYPE**](UNKNOWN_BASE_TYPE.md)| Request body should contain fields to be set during creation. |
+ **workaround_agent_to_server_test** | [**WorkaroundAgentToServerTest**](WorkaroundAgentToServerTest.md)| Request body should contain fields to be set during creation. |
  **aid** | **int**| Specifies the account group context of the request, obtained from the /account-groups endpoint. Specifying this parameter without the user being assigned to the target account will result in an error response. | [optional]
 
 ### Return type

@@ -12,32 +12,6 @@ import sys
 import unittest
 
 import openapi_client
-from openapi_client.model.account_groups import AccountGroups
-from openapi_client.model.agent_type import AgentType
-from openapi_client.model.cloud_agent import CloudAgent
-from openapi_client.model.created_date import CreatedDate
-from openapi_client.model.enabled import Enabled
-from openapi_client.model.enterprise_cluster_agent_all_of import EnterpriseClusterAgentAllOf
-from openapi_client.model.enterprise_cluster_member import EnterpriseClusterMember
-from openapi_client.model.error_details import ErrorDetails
-from openapi_client.model.group import Group
-from openapi_client.model.ipv6_policy import Ipv6Policy
-from openapi_client.model.keep_browser_cache import KeepBrowserCache
-from openapi_client.model.notification_rules import NotificationRules
-from openapi_client.model.verify_ssl_certificates import VerifySslCertificates
-globals()['AccountGroups'] = AccountGroups
-globals()['AgentType'] = AgentType
-globals()['CloudAgent'] = CloudAgent
-globals()['CreatedDate'] = CreatedDate
-globals()['Enabled'] = Enabled
-globals()['EnterpriseClusterAgentAllOf'] = EnterpriseClusterAgentAllOf
-globals()['EnterpriseClusterMember'] = EnterpriseClusterMember
-globals()['ErrorDetails'] = ErrorDetails
-globals()['Group'] = Group
-globals()['Ipv6Policy'] = Ipv6Policy
-globals()['KeepBrowserCache'] = KeepBrowserCache
-globals()['NotificationRules'] = NotificationRules
-globals()['VerifySslCertificates'] = VerifySslCertificates
 from openapi_client.model.enterprise_cluster_agent import EnterpriseClusterAgent
 
 
